@@ -1,4 +1,7 @@
-import time, requests, json
+import time
+import requests
+import json
+
 from pytz import country_names as cname
 from telegram import Message, Chat, Update, Bot, ParseMode
 from telegram.error import BadRequest
@@ -7,19 +10,12 @@ from telegram.ext import run_async
 from hitsuki import dispatcher, updater, API_WEATHER as APPID
 from hitsuki.modules.disable import DisableAbleCommandHandler
 
+
 @run_async
 def weather(bot, update, args):
     if len(args) == 0:
-        reply = f'Write a location to check the weather.'
-        del_msg = update.effective_message.reply_text("{}".format(reply),
-                               parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-        time.sleep(5)
-        try:
-            del_msg.delete()
-            update.effective_message.delete()
-        except BadRequest as err:
-            if (err.message == "Message to delete not found" ) or (err.message == "Message can't be deleted" ):
-                return
+        update.effective_message.reply_text("Write a location to check the weather.")
+        return
 
 
     CITY = " ".join(args)
@@ -27,16 +23,8 @@ def weather(bot, update, args):
     request = requests.get(url)
     result = json.loads(request.text)
     if request.status_code != 200:
-        reply = f'Location not valid.'
-        del_msg = update.effective_message.reply_text("{}".format(reply),
-                               parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-        time.sleep(5)
-        try:
-            del_msg.delete()
-            update.effective_message.delete()
-        except BadRequest as err:
-            if (err.message == "Message to delete not found" ) or (err.message == "Message can't be deleted" ):
-                return
+        update.effective_message.reply_text("Location not valid.")
+        return
     
     cityname = result['name']
     curtemp = result['main']['temp']
@@ -82,23 +70,12 @@ def weather(bot, update, args):
         temp = str(round(tF))
         return temp
 
-    reply = f"*Current weather for {cityname}, {country_name} is*:\n\n*Temperature:* `{celsius(curtemp)}°C ({fahr(curtemp)}ºF), feels like {celsius(feels_like)}°C ({fahr(feels_like)}ºF) \n`*Condition:* `{condmain}, {conddet}` {icon}\n*Humidity:* `{humidity}%`\n*Wind:* `{kmph[0]} km/h`\n"
-    del_msg = update.effective_message.reply_text("{}".format(reply),
-                           parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-    time.sleep(30)
-    try:
-        del_msg.delete()
-        update.effective_message.delete()
-    except BadRequest as err:
-        if (err.message == "Message to delete not found" ) or (err.message == "Message can't be deleted" ):
-            return
+    update.message.reply_text("*Current weather for {cityname}, {country_name} is*:\n\n*Temperature:* `{celsius(curtemp)}°C ({fahr(curtemp)}ºF), feels like {celsius(feels_like)}°C ({fahr(feels_like)}ºF) \n`*Condition:* `{condmain}, {conddet}` {icon}\n*Humidity:* `{humidity}%`\n*Wind:* `{kmph[0]} km/h`\n", parse_mode=ParseMode.MARKDOWN)
+    return
+
 
 __help__ = """
-Weather module:
-
  - /weather <city>: gets weather info in a particular place using openweathermap.org api
- 
- \* For obvious reasons the weather command and the output will be deleted after 30 seconds
 """
 
 __mod_name__ = "Weather"
