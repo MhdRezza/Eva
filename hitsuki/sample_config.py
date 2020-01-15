@@ -24,8 +24,6 @@ class Config(object):
 
     # Some API is required for more features
     MAPS_API = None
-    CAT_API_KEY = None
-    DOG_API_KEY = None
 
     # OPTIONAL
     SUDO_USERS = []  # List of id's (not usernames) for users which have sudo access to the bot.

@@ -61,9 +61,6 @@ if ENV:
     MAPS_API = os.environ.get('MAPS_API', None)
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
 
-    CAT_API_KEY = os.environ.get('CAT_API_KEY', "")
-    DOG_API_KEY = os.environ.get('DOG_API_KEY', "")
-
 else:
     from hitsuki.config import Development as Config
 
@@ -107,9 +104,6 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     MAPS_API = Config.MAPS_API
     TEMPORARY_DATA = Config.TEMPORARY_DATA
-
-    CAT_API_KEY = Config.CAT_API_KEY
-    DOG_API_KEY = Config.DOG_API_KEY
 
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(302253890)
