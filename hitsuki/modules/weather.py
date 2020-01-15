@@ -70,7 +70,9 @@ def weather(bot, update, args):
         temp = str(round(tF))
         return temp
 
-    update.message.reply_text("*Current weather for {cityname}, {country_name} is*:\n\n*Temperature:* `{celsius(curtemp)}°C ({fahr(curtemp)}ºF), feels like {celsius(feels_like)}°C ({fahr(feels_like)}ºF) \n`*Condition:* `{condmain}, {conddet}` {icon}\n*Humidity:* `{humidity}%`\n*Wind:* `{kmph[0]} km/h`\n", parse_mode=ParseMode.MARKDOWN)
+    reply = f"*Current weather for {cityname}, {country_name} is*:\n\n*Temperature:* `{celsius(curtemp)}°C ({fahr(curtemp)}ºF), feels like {celsius(feels_like)}°C ({fahr(feels_like)}ºF) \n`*Condition:* `{condmain}, {conddet}` {icon}\n*Humidity:* `{humidity}%`\n*Wind:* `{kmph[0]} km/h`\n"
+    update.effective_message.reply_text("{}".format(reply),
+                parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
     return
 
 
