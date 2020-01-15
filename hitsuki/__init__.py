@@ -60,6 +60,7 @@ if ENV:
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
     MAPS_API = os.environ.get('MAPS_API', None)
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
+    API_WEATHER = os.environ.get('API_OPENWEATHER', None)
 
 else:
     from hitsuki.config import Development as Config
@@ -104,6 +105,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     MAPS_API = Config.MAPS_API
     TEMPORARY_DATA = Config.TEMPORARY_DATA
+    API_WEATHER = Config.API_OPENWEATHER
 
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(302253890)
