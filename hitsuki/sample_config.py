@@ -39,6 +39,7 @@ class Config(object):
     STRICT_GMUTE = False
     ALLOW_EXCL = True  # Allow ! commands as well as /
     TEMPORARY_DATA = None # Temporary data for backup module, use int number
+    API_OPENWEATHER = None # OpenWeather API key, string
 
     # MEMES
     DEEPFRY_TOKEN = None  # Used for facial recognition in the deepfry command
