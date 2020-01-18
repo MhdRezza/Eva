@@ -221,9 +221,7 @@ def ungban(bot: Bot, update: Update, args: List[str]):
             if excp.message in UNGBAN_ERRORS:
                 pass
             else:
-                message.reply_text("Could not un-gban due to: {}".format(excp.message))
-                bot.send_message(OWNER_ID, "Could not un-gban due to: {}".format(excp.message))
-                return
+                pass
         except TelegramError:
             pass
 
