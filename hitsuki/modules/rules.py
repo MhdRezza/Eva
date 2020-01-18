@@ -3,7 +3,7 @@ from typing import Optional
 from telegram import Message, Update, Bot, User
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, run_async, Filters
+from telegram.ext import CommandHandler, DisableAbleCommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown
 
 import hitsuki.modules.sql.rules_sql as sql
@@ -106,7 +106,7 @@ __help__ = """
 
 __mod_name__ = "Rules"
 
-GET_RULES_HANDLER = CommandHandler("rules", get_rules, filters=Filters.group)
+GET_RULES_HANDLER = DisableAbleCommandHandler("rules", get_rules, filters=Filters.group)
 SET_RULES_HANDLER = CommandHandler("setrules", set_rules, filters=Filters.group)
 RESET_RULES_HANDLER = CommandHandler("clearrules", clear_rules, filters=Filters.group)
 
