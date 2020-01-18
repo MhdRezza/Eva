@@ -40,6 +40,7 @@ UNGBAN_ERRORS = {
     "Not in the chat",
     "Channel_private",
     "Chat_admin_required",
+    "User not found",
 }
 
 
@@ -221,7 +222,9 @@ def ungban(bot: Bot, update: Update, args: List[str]):
             if excp.message in UNGBAN_ERRORS:
                 pass
             else:
-                pass
+                message.reply_text("Could not un-gban due to: {}".format(excp.message))
+                bot.send_message(OWNER_ID, "Could not un-gban due to: {}".format(excp.message))
+                return
         except TelegramError:
             pass
 
