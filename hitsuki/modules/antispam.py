@@ -229,6 +229,11 @@ def ungban(bot: Bot, update: Update, args: List[str]):
 
     sql.ungban_user(user_id)
 
+    send_to_list(bot, SUDO_USERS + SUPPORT_USERS, 
+                  "{} has been unbanned globally!".format(mention_html(user_chat.id, 
+                                                                         user_chat.first_name or "Deleted Account")),
+                  html=True)
+
     message.reply_text("Person has been un-gbanned.")
                                                            
 
