@@ -97,7 +97,7 @@ def getfw(bot, update, args):
     reply += f' • [samfrew.com]({url1})\n'
     reply += f' • [sammobile.com]({url2})\n'
     reply += f' • [sfirmware.com]({url3})\n'
-    reply += f' • [samfw.com]({url4})\n\n'
+    reply += f' • [samfw.com]({url4}) ⭐\n\n'
     reply += f'You can also receive real-time firmwares from SamFrew on the @SamFirm channel\n'
     update.message.reply_text("{}".format(reply),
                            parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
@@ -526,11 +526,14 @@ def pe(bot: Bot, update: Update):
         buildsize_a = usr['size']
         buildsize_b = sizee(int(buildsize_a))
         version = usr['version']
+        maintainerurl = usr['maintainer_url']
+        maintainer = usr['maintainer']
 
-        reply_text = (f"🔍 *PixelExperience build for {device}*\n"
+        reply_text = (f"*PixelExperience build for {device}*\n"
                       f"*Download:* [{filename}]({url})\n"
                       f"*Build size:* `{buildsize_b}`\n"
-                      f"*Version:* `{version}`")
+                      f"*Version:* `{version}`\n"
+                      f"*Maintainer:* [{maintainer}]({maintainerurl})")
 
         keyboard = [[InlineKeyboardButton(text="Click to Download", url=url)]]
         message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN,
