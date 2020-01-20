@@ -26,13 +26,13 @@ def getData(url):
     name = api.getReleaseName(recentRelease)
     assets = api.getAssets(recentRelease)
     releaseName = api.getReleaseName(recentRelease)
-    message = "Author: [{}]({})\n".format(author, authorUrl)
+    message = "Author: <a href=\{}\">{}</a>".format(authorUrl, author)
     message += "Release Name: "+releaseName+"\n\n"
     for asset in assets:
         message += "<b>Asset:</b> \n"
         fileName = api.getReleaseFileName(asset)
         fileURL = api.getReleaseFileURL(asset)
-        assetFile = "[{}]({})".format(fileName, fileURL)
+        assetFile = "<a href=\{}\">{}</a>"".format(fileURL, fileName)
         sizeB = ((api.getSize(asset))/1024)/1024
         size = "{0:.2f}".format(sizeB)
         downloadCount = api.getDownloadCount(asset)
