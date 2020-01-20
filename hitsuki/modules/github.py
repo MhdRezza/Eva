@@ -29,7 +29,7 @@ def getData(url):
     message = "Author: [{}]({})\n".format(author, authorUrl)
     message += "Release Name: "+releaseName+"\n\n"
     for asset in assets:
-        message += "*Asset:* \n"
+        message += "<b>Asset:</b> \n"
         fileName = api.getReleaseFileName(asset)
         fileURL = api.getReleaseFileURL(asset)
         assetFile = "[{}]({})".format(fileName, fileURL)
@@ -57,7 +57,7 @@ def getRelease(bot: Bot, update: Update, args: List[str]):
         return
     url = args[0]
     text = getData(url)
-    msg.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+    msg.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     return
 
 @run_async
