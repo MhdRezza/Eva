@@ -26,7 +26,7 @@ def getData(url):
     name = api.getReleaseName(recentRelease)
     assets = api.getAssets(recentRelease)
     releaseName = api.getReleaseName(recentRelease)
-    message = "Author: <a href='{}'>{}</a>".format(authorUrl, author)
+    message = "<b>Author:</b> <a href='{}'>{}</a> \n".format(authorUrl, author)
     message += "Release Name: "+releaseName+"\n\n"
     for asset in assets:
         message += "<b>Asset:</b> \n"
