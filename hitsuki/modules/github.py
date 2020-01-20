@@ -68,7 +68,7 @@ def hashFetch(bot: Bot, update: Update): #kanged from notes
     no_hash = fst_word[1:]
     url = getRepo(bot, update, no_hash)
     text = getData(url)
-    msg.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+    msg.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     return
     
 @run_async
@@ -79,7 +79,7 @@ def cmdFetch(bot: Bot, update: Update, args: List[str]):
         return
     url = getRepo(bot, update, args[0])
     text = getData(url)
-    msg.reply_text(text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+    msg.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
     return
 
 
