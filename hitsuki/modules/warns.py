@@ -4,7 +4,7 @@ from typing import Optional, List
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, User, CallbackQuery
-from telegram import Message, Chat, update, Bot
+from telegram import Message, Chat, Update, Bot
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async, DispatcherHandlerStop, MessageHandler, Filters, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
@@ -26,7 +26,7 @@ CURRENT_WARNING_FILTER_STRING = "<b>Current warning filters in this chat:</b>\n"
 
 
 # Not async
-def warn(user: User, chat: Chat, reason: str, message: Message, warner: User = None) -> str:
+def warn(user: User, chat: Chat, update: Update, reason: str, message: Message, warner: User = None) -> str:
     bot = dispatcher.bot
     chat = update.effective_chat  # type: Optional[Chat]
 
