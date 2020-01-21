@@ -4,7 +4,7 @@ from typing import Optional, List
 
 import telegram
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ParseMode, User, CallbackQuery
-from telegram import Message, Chat, Update, Bot
+from telegram import Message, Chat, update, Bot
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, run_async, DispatcherHandlerStop, MessageHandler, Filters, CallbackQueryHandler
 from telegram.utils.helpers import mention_html
