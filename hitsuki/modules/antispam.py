@@ -1,4 +1,5 @@
 import html
+import time
 from io import BytesIO
 from typing import Optional, List
 
@@ -325,6 +326,22 @@ def antispam(bot: Bot, update: Update, args: List[str]):
                          "spammers.").format(sql.does_chat_gban(chat.id)))
 
 
+@run_async
+def clear_gbans(bot: Bot, update: Update):
+    banned = sql.get_gban_list()
+    deleted = 0
+    for user in banned:
+        id = user["user_id"]
+        time.sleep(0.1) # Reduce floodwait
+        try:
+            bot.get_chat(id)
+        except BadRequest:
+            deleted += 1
+            sql.ungban_user(id)
+    update.message.reply_text("Done! {} deleted accounts were removed " \
+    "from the gbanlist.".format(deleted), parse_mode=ParseMode.MARKDOWN)
+
+
 def __stats__():
     return "{} gbanned users.".format(sql.num_gbanned_users())
 
@@ -397,11 +414,14 @@ UNGBAN_HANDLER = CommandHandler("ungban", ungban, pass_args=True,
 GBAN_LIST = CommandHandler("gbanlist", gbanlist, filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 GBAN_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
 
+CLEAN_DELACC_HANDLER = CommandHandler("cleandelacc", clear_gbans, filters=Filters.user(OWNER_ID))
+
 dispatcher.add_handler(ANTISPAM_STATUS)
 
 dispatcher.add_handler(GBAN_HANDLER)
 dispatcher.add_handler(UNGBAN_HANDLER)
 dispatcher.add_handler(GBAN_LIST)
+dispatcher.add_handler(CLEAN_DELACC_HANDLER)
 
 if STRICT_ANTISPAM:  # enforce GBANS if this is set
     dispatcher.add_handler(GBAN_ENFORCER, GBAN_ENFORCE_GROUP)
