@@ -330,6 +330,7 @@ def antispam(bot: Bot, update: Update, args: List[str]):
 def clear_gbans(bot: Bot, update: Update):
     banned = sql.get_gban_list()
     deleted = 0
+    update.message.reply_text("*Beginning to cleanup deleted users from global ban database...*\nThis process might take a while...", parse_mode=ParseMode.MARKDOWN)
     for user in banned:
         id = user["user_id"]
         time.sleep(0.1) # Reduce floodwait
@@ -343,7 +344,7 @@ def clear_gbans(bot: Bot, update: Update):
 
 
 def __stats__():
-    return "{} gbanned users.".format(sql.num_gbanned_users())
+    return "{} gbanned users. [Note, We regularly clean off deleted account from the database]".format(sql.num_gbanned_users())
 
 
 def __user_info__(user_id, chat_id):

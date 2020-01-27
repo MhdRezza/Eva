@@ -3,10 +3,9 @@ from typing import Optional
 
 from telegram import User, Chat, ChatMember, Update, Bot
 
-import hitsuki.modules.sql.admin_sql as admin_sql
-import hitsuki.modules.sql.antispam_sql as sql
 from hitsuki import DEL_CMDS, SUDO_USERS, WHITELIST_USERS
-
+import hitsuki.modules.sql.admin_sql as admin_sql
+from hitsuki.modules.translations.strings import tld
 
 def can_delete(chat: Chat, bot_id: int) -> bool:
     return chat.get_member(bot_id).can_delete_messages
@@ -115,7 +114,10 @@ def user_admin(func):
         user = update.effective_user  # type: Optional[User]
         chat = update.effective_chat  # type: Optional[Chat]
         if user and is_user_admin(update.effective_chat, user.id):
-            return func(bot, update, *args, **kwargs)
+            try:
+                return func(bot, update, *args, **kwargs)
+            except:
+                return
 
         elif not user:
             pass
@@ -153,14 +155,3 @@ def user_not_admin(func):
             return func(bot, update, *args, **kwargs)
 
     return is_not_admin
-
-
-def user_is_gbanned(func):
-    @wraps(func)
-    def is_user_gbanned(bot: Bot, update: Update, *args, **kwargs):
-        if not sql.is_user_gbanned(update.effective_user.id):
-            return func(bot, update, *args, **kwargs)
-        else:
-            pass
-
-    return is_user_gbanned
