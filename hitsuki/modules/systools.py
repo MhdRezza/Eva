@@ -19,10 +19,11 @@ from hitsuki.modules.disable import DisableAbleCommandHandler
 @run_async
 def status(bot: Bot, update: Update):
     reply = "<b>System Status:</b> <code>operational</code>\n\n"
-    reply += "<b>Hitsuki version:</b> <code>2.5</code>\n"
+    reply += "<b>Hitsuki version:</b> <code>2.5.2</code>\n"
     reply += "<b>Python version:</b> <code>"+python_version()+"</code>\n"
     reply += "<b>CAS API version:</b> <code>"+str(cas.vercheck())+"</code>\n"
-    reply += "<b>GitHub API version:</b> <code>"+str(git.vercheck())+"</code>\n"
+    reply += "<b>GitHub API version:</b> <code>"+str(git.vercheck())+"</code>\n\n"
+    reply += "<b>News channel:</b> @HitsukiNews"
     update.effective_message.reply_text(reply, parse_mode=ParseMode.HTML)
 
 
