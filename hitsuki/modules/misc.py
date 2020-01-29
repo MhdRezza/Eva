@@ -163,18 +163,18 @@ def info(bot: Bot, update: Update, args: List[str]):
         text += tld(chat.id, "\n\nThis person is my owner - I would never do anything against them!")
     else:
         if user.id == int(302253890):
-            text += tld(chat.id, "\nThis person.... He is my god.")
+            text += tld(chat.id, "\n\nThis person.... He is my god.")
 
         if user.id in SUDO_USERS:
-            text += tld(chat.id, "\nThis person is one of my sudo users! " \
+            text += tld(chat.id, "\n\nThis person is one of my sudo users! " \
                                  "Nearly as powerful as my owner - so watch it.")
         else:
             if user.id in SUPPORT_USERS:
-                text += tld(chat.id, "\nThis person is one of my support users! " \
+                text += tld(chat.id, "\n\nThis person is one of my support users! " \
                                      "Not quite a sudo user, but can still gban you off the map.")
 
             if user.id in WHITELIST_USERS:
-                text += tld(chat.id, "\nThis person has been whitelisted! " \
+                text += tld(chat.id, "\n\nThis person has been whitelisted! " \
                                      "That means I'm not allowed to ban/kick them.")
 
     for mod in USER_INFO:
@@ -182,7 +182,7 @@ def info(bot: Bot, update: Update, args: List[str]):
         if mod_info:
             text += "\n\n" + mod_info
 
-    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML)
+    update.effective_message.reply_text(text, parse_mode=ParseMode.HTML, disable_web_page_preview=True)
 
 
 @run_async

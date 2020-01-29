@@ -51,11 +51,22 @@ def set_bio(bot: Bot, update: Update):
 
 def __user_info__(user_id, chat_id):
     bio = html.escape(sql.get_user_bio(user_id) or "")
-    me = html.escape(sql.get_user_me_info(user_id) or "")
     if me:
-        return "<b>About user:</b>\n{me}\n".format(me=me, disable_web_page_preview=True)
+        return "<b>About user:</b>\n{bio}\n".format(bio=bio, disable_web_page_preview=True)
     else:
         return ""
+
+
+def clear_bio(user_id):
+    
+ 
+ 
+@run_async
+def gdpr(bot: Bot, update: Update):
+    update.effective_message.reply_text("Deleting bio...")
+    sql.clear_user_bio(user_id)
+    update.effective_message.reply_text("`Bio deleted.`",
+                                        parse_mode=ParseMode.MARKDOWN)
 
 
 __help__ = """
@@ -70,6 +81,8 @@ __mod_name__ = "Biography"
 
 SET_BIO_HANDLER = CommandHandler("setbio", set_bio)
 GET_BIO_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
+CLEAR_BIO_HANDLER = CommandHandler("clearbio", set_bio)
 
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
+dispatcher.add_handler(CLEAR_BIO_HANDLER)
