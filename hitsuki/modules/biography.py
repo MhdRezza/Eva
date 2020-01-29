@@ -7,13 +7,13 @@ from telegram.ext.dispatcher import run_async
 from telegram.ext import CommandHandler
 from telegram.utils.helpers import escape_markdown
 
-import haruka.modules.sql.userinfo_sql as sql
-from haruka import dispatcher, SUDO_USERS, OWNER_ID
-from haruka.modules.helper_funcs.extraction import extract_user
+import hitsuki.modules.sql.userinfo_sql as sql
+from hitsuki import dispatcher, SUDO_USERS, OWNER_ID
+from hitsuki.modules.helper_funcs.extraction import extract_user
 
 
 @run_async
-def about_me(bot: Bot, update: Update, args: List[str]):
+def my_bio(bot: Bot, update: Update, args: List[str]):
     message = update.effective_message  # type: Optional[Message]
     user_id = extract_user(message, args)
 
@@ -35,7 +35,7 @@ def about_me(bot: Bot, update: Update, args: List[str]):
 
 
 @run_async
-def set_about_me(bot: Bot, update: Update):
+def set_bio(bot: Bot, update: Update):
     message = update.effective_message  # type: Optional[Message]
     user_id = message.from_user.id
     text = message.text
@@ -68,8 +68,8 @@ __help__ = """
 
 __mod_name__ = "Biography"
 
-SET_ABOUT_HANDLER = CommandHandler("setbio", set_about_me)
-GET_ABOUT_HANDLER = CommandHandler("bio", about_me, pass_args=True)
+SET_ABOUT_HANDLER = CommandHandler("setbio", set_bio)
+GET_ABOUT_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
 
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
