@@ -53,7 +53,7 @@ def __user_info__(user_id, chat_id):
     bio = html.escape(sql.get_user_bio(user_id) or "")
     me = html.escape(sql.get_user_me_info(user_id) or "")
     if me:
-        return "<b>About user:</b>\n{me}\n".format(me=me)
+        return "<b>About user:</b>\n{me}\n".format(me=me, disable_web_page_preview=True)
     else:
         return ""
 
