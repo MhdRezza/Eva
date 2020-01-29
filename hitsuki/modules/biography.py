@@ -59,6 +59,7 @@ def __user_info__(user_id, chat_id):
 
 @run_async
 def clear_bio(bot: Bot, update: Update):
+	user_id = message.from_user.id
     update.effective_message.reply_text("Deleting bio...")
     sql.clear_user_bio(user_id)
     update.effective_message.reply_text("`Bio deleted.`",
