@@ -1,0 +1,75 @@
+import html
+from typing import Optional, List
+
+from telegram import Message, Update, Bot, User
+from telegram import ParseMode, MAX_MESSAGE_LENGTH
+from telegram.ext.dispatcher import run_async
+from telegram.ext import CommandHandler
+from telegram.utils.helpers import escape_markdown
+
+import haruka.modules.sql.userinfo_sql as sql
+from haruka import dispatcher, SUDO_USERS, OWNER_ID
+from haruka.modules.helper_funcs.extraction import extract_user
+
+
+@run_async
+def about_me(bot: Bot, update: Update, args: List[str]):
+    message = update.effective_message  # type: Optional[Message]
+    user_id = extract_user(message, args)
+
+    if user_id:
+        user = bot.get_chat(user_id)
+    else:
+        user = message.from_user
+
+    info = sql.get_user_me_info(user.id)
+
+    if info:
+        update.effective_message.reply_text("*{}*:\n{}".format(user.first_name, escape_markdown(info)),
+                                            parse_mode=ParseMode.MARKDOWN)
+    elif message.reply_to_message:
+        username = message.reply_to_message.from_user.first_name
+        update.effective_message.reply_text(username + " hasn't set an info message about themselves  yet!")
+    else:
+        update.effective_message.reply_text("You haven't set an info message about yourself yet!")
+
+
+@run_async
+def set_about_me(bot: Bot, update: Update):
+    message = update.effective_message  # type: Optional[Message]
+    user_id = message.from_user.id
+    text = message.text
+    info = text.split(None, 1)  # use python's maxsplit to only remove the cmd, hence keeping newlines.
+    if len(info) == 2:
+        if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
+            sql.set_user_me_info(user_id, info[1])
+            message.reply_text("Updated your info!")
+        else:
+            message.reply_text(
+                "Your info needs to be under {} characters! You have {}.".format(MAX_MESSAGE_LENGTH // 4, len(info[1])))
+
+
+def __user_info__(user_id, chat_id):
+    bio = html.escape(sql.get_user_bio(user_id) or "")
+    me = html.escape(sql.get_user_me_info(user_id) or "")
+    if me:
+        return "<b>About user:</b>\n{me}\n".format(me=me)
+    else:
+        return ""
+
+
+__help__ = """
+*With this module you can know a little more about other bot users.*
+
+*Available commands:*
+ - /setbio <text>: will set your info
+ - /bio: will get your or another user's info
+"""
+
+__mod_name__ = "Biography"
+
+SET_ABOUT_HANDLER = CommandHandler("setbio", set_about_me)
+GET_ABOUT_HANDLER = CommandHandler("bio", about_me, pass_args=True)
+
+dispatcher.add_handler(SET_BIO_HANDLER)
+dispatcher.add_handler(GET_BIO_HANDLER)
