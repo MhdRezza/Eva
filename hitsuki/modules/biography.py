@@ -51,6 +51,7 @@ def set_bio(bot: Bot, update: Update):
 
 
 def __user_info__(user_id, chat_id):
+	chat = update.effective_chat  # type: Optional[Chat]
     bio = html.escape(sql.get_user_bio(user_id) or "")
     if bio:
         return tld(chat.id, "<b>About user:</b>\n{bio}\n".format(bio=bio))
