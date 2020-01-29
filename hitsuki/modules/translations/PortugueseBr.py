@@ -534,7 +534,7 @@ PortugueseBrStrings = {
 #__main__
     #Module names
         "Admin": "Administrador",
-        "Biography": "Biografia
+        "Biography": "Biografia",
         "AFK": "Ausente (AFK)",
         "AntiFlood": "Anti-Flood",
         "Bans": "Banimentos",
