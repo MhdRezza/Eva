@@ -57,12 +57,8 @@ def __user_info__(user_id, chat_id):
         return ""
 
 
-def clear_bio(user_id):
-    
- 
- 
 @run_async
-def gdpr(bot: Bot, update: Update):
+def clear_bio(bot: Bot, update: Update):
     update.effective_message.reply_text("Deleting bio...")
     sql.clear_user_bio(user_id)
     update.effective_message.reply_text("`Bio deleted.`",
@@ -81,7 +77,7 @@ __mod_name__ = "Biography"
 
 SET_BIO_HANDLER = CommandHandler("setbio", set_bio)
 GET_BIO_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
-CLEAR_BIO_HANDLER = CommandHandler("clearbio", set_bio)
+CLEAR_BIO_HANDLER = CommandHandler("clearbio", clear_bio)
 
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
