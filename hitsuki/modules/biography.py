@@ -68,8 +68,8 @@ __help__ = """
 
 __mod_name__ = "Biography"
 
-SET_ABOUT_HANDLER = CommandHandler("setbio", set_bio)
-GET_ABOUT_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
+SET_BIO_HANDLER = CommandHandler("setbio", set_bio)
+GET_BIO_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
 
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
