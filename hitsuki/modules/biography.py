@@ -57,15 +57,6 @@ def __user_info__(user_id, chat_id):
         return ""
 
 
-@run_async
-def clear_bio(bot: Bot, update: Update):
-	user_id = message.from_user.id
-    update.effective_message.reply_text("Deleting bio...")
-    sql.clear_user_bio(user_id)
-    update.effective_message.reply_text("`Bio deleted.`",
-                                        parse_mode=ParseMode.MARKDOWN)
-
-
 __help__ = """
 *With this module you can know a little more about other bot users.*
 
@@ -78,8 +69,6 @@ __mod_name__ = "Biography"
 
 SET_BIO_HANDLER = CommandHandler("setbio", set_bio)
 GET_BIO_HANDLER = CommandHandler("bio", my_bio, pass_args=True)
-CLEAR_BIO_HANDLER = CommandHandler("clearbio", clear_bio)
 
 dispatcher.add_handler(SET_BIO_HANDLER)
 dispatcher.add_handler(GET_BIO_HANDLER)
-dispatcher.add_handler(CLEAR_BIO_HANDLER)
