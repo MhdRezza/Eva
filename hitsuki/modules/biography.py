@@ -10,6 +10,7 @@ from telegram.utils.helpers import escape_markdown
 import hitsuki.modules.sql.userinfo_sql as sql
 from hitsuki import dispatcher, SUDO_USERS, OWNER_ID
 from hitsuki.modules.helper_funcs.extraction import extract_user
+from hitsuki.modules.translations.strings import tld
 
 
 @run_async
@@ -52,7 +53,7 @@ def set_bio(bot: Bot, update: Update):
 def __user_info__(user_id, chat_id):
     bio = html.escape(sql.get_user_bio(user_id) or "")
     if bio:
-        return "<b>About user:</b>\n{bio}\n".format(bio=bio, disable_web_page_preview=True)
+        return tld(chat.id, "<b>About user:</b>\n{bio}\n".format(bio=bio))
     else:
         return ""
 

@@ -255,6 +255,8 @@ PortugueseBrStrings = {
     "\nThis person has been whitelisted! That means I'm not allowed to ban/kick them.":
         "\nEssa pessoa está na lista branca. Isso significa que eu não posso banir ou removê-la.",
 
+    "<b>About user:</b>\n{bio}\n": "<b>Sobre o usuário:</b>\n{bio}\n",
+
     "Its always banhammer time for me!": "É sempre a hora do martelo do ban para mim!",
 
     "It's {} in {}": "Está {} em {}",
@@ -532,6 +534,7 @@ PortugueseBrStrings = {
 #__main__
     #Module names
         "Admin": "Administrador",
+        "Biography": "Biografia
         "AFK": "Ausente (AFK)",
         "AntiFlood": "Anti-Flood",
         "Bans": "Banimentos",
@@ -613,6 +616,14 @@ Um exemplo de como promover alguém para administrador:
  - brb <motivo>: Faz o mesmo que o comando AFK, mas sem ser um comando.
 
 Quando você estiver ausente (AFK), qualquer menção será respondida com uma mensagem informando que você não está disponível.
+""",
+
+"Biography_help": """
+*Com este módulo, você pode conhecer um pouco mais sobre outros usuários de bot.*
+
+*Comandos disponíveis:*
+ - /setbio <texto>: define suas informações
+ - /bio: obterá as informações do seu ou de outro usuário
 """,
 
 "Translator_help": """
