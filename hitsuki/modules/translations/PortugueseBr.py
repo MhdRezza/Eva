@@ -259,8 +259,8 @@ PortugueseBrStrings = {
 
     "Its always banhammer time for me!": "É sempre a hora do martelo do ban para mim!",
 
-    "*List of repo shotcuts in {}:*\n": "*Lista de atalhos de repo em {}:*",
-    "\nYou can get repo shortcuts by using `/fetch repo`, or `&repo`.\nNo repo shortcuts in this chat!": "\nVocê pode obter esses atalhos usando `/fetch repo`, ou `&repo`.\nNenhum atalho de repo definido neste grupo!",
+    "*List of repo shotcuts in {}:*\n": "*Lista de atalhos de repo em {}:*\n",
+    "\nYou can get repo shortcuts by using `/fetch repo`, or `&repo`.": "\nVocê pode obter esses atalhos usando `/fetch repo`, ou `&repo`.",
 
     "It's {} in {}": "Está {} em {}",
     
