@@ -138,7 +138,7 @@ def listRepo(bot: Bot, update: Update):
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
         msg += repo_name
-    if msg == tld "*List of repo shotcuts in {}:*\n":
+    if msg == "*List of repo shotcuts in {}:*\n":
         (update.effective_message.reply_text("No repo shortcuts in this chat!")
     elif len(msg) != 0:
         update.effective_message.reply_text(msg.format(chat_name) + des, parse_mode=ParseMode.MARKDOWN)
