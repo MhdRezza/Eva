@@ -245,15 +245,15 @@ PortugueseBrStrings = {
     "\nFirst Name: {}": "\nNome: {}",
     "\nLast Name: {}": "\nSobrenome: {}",
     "\nUsername: @{}": "\nNome de usuário: @{}",
-    "\nUser link: {}\n": "\nLink do usuário: {}",
+    "\nUser link: {}": "\nLink do usuário: {}",
     "\n\nThis person is my owner - I would never do anything against them!":
         "\n\nEssa pessoa é meu dono, eu nunca faria algo contra ela!",
-    "\nThis person is one of my sudo users! Nearly as powerful as my owner - so watch it.":
-        "\nEssa pessoa é um dos meus usuários Sudo! Tem quase tanto poder quanto meu dono, então tenha cuidado",
-    "\nThis person is one of my support users! Not quite a sudo user, but can still gban you off the map.":
-        "\nEssa pessoa é um dos meus usuários suporte. Não é como um usuário sudo, mas pode te banir globalmente, tenha cuidado!",
+    "\n\nThis person is one of my sudo users! Nearly as powerful as my owner - so watch it.":
+        "\n\nEssa pessoa é um dos meus usuários Sudo! Tem quase tanto poder quanto meu dono, então tenha cuidado",
+    "\n\nThis person is one of my support users! Not quite a sudo user, but can still gban you off the map.":
+        "\n\nEssa pessoa é um dos meus usuários suporte. Não é como um usuário sudo, mas pode te banir globalmente, tenha cuidado!",
     "\nThis person has been whitelisted! That means I'm not allowed to ban/kick them.":
-        "\nEssa pessoa está na lista branca. Isso significa que eu não posso banir ou removê-la.",
+        "\n\nEssa pessoa está na lista branca. Isso significa que eu não posso banir ou removê-la.",
 
     "<b>About user:</b>\n{bio}\n": "<b>Sobre o usuário:</b>\n{bio}\n",
 
