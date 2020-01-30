@@ -266,7 +266,7 @@ PortugueseBrStrings = {
     
     "\nAll commands can either be used with `/` or `!`.\n": "\nTodos os comandos podem ser usados ​​com `/` ou `!`.\n",
     "Repo shortcut saved successfully!": "Atalho de repositório salvo com sucesso!",
-    "Invalid data, use <reponame> <user>/<repo>", "Dados inválidos, use <nomedorepo> <usuário>/<repo>",
+    "Invalid data, use <reponame> <user>/<repo>": "Dados inválidos, use <nomedorepo> <usuário>/<repo>",
     "Invalid repo name!": "Nome de repositório inválido!",
     "Repo shortcut deleted successfully!": "Atalho de repositório apagado com sucesso!",
     
