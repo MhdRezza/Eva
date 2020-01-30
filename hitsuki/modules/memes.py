@@ -269,6 +269,7 @@ __help__ = """
 - /deepfry: For when you're hungry for memes
 - /shout <keyword>: Write anything you want to give loud shout
 - /dllm: Some chinese memes
+- /thonkify <reply>/<args>: turns text into thonk text (only supports letters and none symbols for now).
 
 *Emojis:*
 - /clapmoji
