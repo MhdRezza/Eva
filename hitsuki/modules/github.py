@@ -133,13 +133,13 @@ def listRepo(bot: Bot, update: Update):
     msg = tld(chat.id, "*List of repo shotcuts in {}:*\n")
     des = tld("\nYou can get repo shortcuts by using `/fetch repo`, or `&repo`.\n")
     for repo in repo_list:
-        repo_name = (" • `&{}`\n".format(repo.name))
+        repo_name = (" • `{}`\n".format(repo.name))
         if len(msg) + len(repo_name) > MAX_MESSAGE_LENGTH:
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
         msg += repo_name
     if msg == "*List of repo shotcuts in {}:*\n":
-        (update.effective_message.reply_text("No repo shortcuts in this chat!")
+        update.effective_message.reply_text("No repo shortcuts in this chat!")
     elif len(msg) != 0:
         update.effective_message.reply_text(msg.format(chat_name) + des, parse_mode=ParseMode.MARKDOWN)
         
