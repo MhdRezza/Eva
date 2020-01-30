@@ -106,10 +106,10 @@ def saveRepo(bot: Bot, update: Update, args: List[str]):
     chat_id = update.effective_chat.id
     msg = update.effective_message
     if(len(args) != 2):
-        msg.reply_text("Invalid data, use <reponame> <user>/<repo>")
+        msg.reply_text(tld(chat_id, "Invalid data, use <reponame> <user>/<repo>"))
         return
     sql.add_repo_to_db(str(chat_id), args[0], args[1])
-    msg.reply_text("Repo shortcut saved successfully!")
+    msg.reply_text(tld(chat_id, "Repo shortcut saved successfully!"))
     return
     
 @run_async
@@ -118,10 +118,10 @@ def delRepo(bot: Bot, update: Update, args: List[str]):
     chat_id = update.effective_chat.id
     msg = update.effective_message
     if(len(args)!=1):
-        msg.reply_text("Invalid repo name!")
+        msg.reply_text(tld(chat_id, "Invalid repo name!"))
         return
     sql.rm_repo(str(chat_id), args[0])
-    msg.reply_text("Repo shortcut deleted successfully!")
+    msg.reply_text(tld(chat_id, "Repo shortcut deleted successfully!"))
     return
     
 @run_async
