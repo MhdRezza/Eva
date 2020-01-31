@@ -43,7 +43,7 @@ def set_bio(bot: Bot, update: Update):
     info = text.split(None, 1)  # use python's maxsplit to only remove the cmd, hence keeping newlines.
     if len(info) == 2:
         if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
-            sql.get_user_bio(user_id, info[1])
+            sql.set_user_bio(user_id, info[1])
             message.reply_text("Updated your info!")
         else:
             message.reply_text(
@@ -59,7 +59,6 @@ def __user_info__(user_id, chat_id):
 
 
 def __gdpr__(user_id):
-    sql.clear_user_info(user_id)
     sql.clear_user_bio(user_id)
 
 
@@ -69,6 +68,8 @@ __help__ = """
 *Available commands:*
  - /setbio <text>: will set your info
  - /bio: will get your or another user's info
+ 
+*Note:* you can delete your bio using the /gdpr command here in private
 """
 
 __mod_name__ = "Biography"
