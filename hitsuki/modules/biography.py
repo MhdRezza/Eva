@@ -23,7 +23,7 @@ def my_bio(bot: Bot, update: Update, args: List[str]):
     else:
         user = message.from_user
 
-    info = sql.get_user_me_info(user.id)
+    info = sql.get_user_bio(user.id)
 
     if info:
         update.effective_message.reply_text("*{}*:\n{}".format(user.first_name, escape_markdown(info)),
@@ -43,7 +43,7 @@ def set_bio(bot: Bot, update: Update):
     info = text.split(None, 1)  # use python's maxsplit to only remove the cmd, hence keeping newlines.
     if len(info) == 2:
         if len(info[1]) < MAX_MESSAGE_LENGTH // 4:
-            sql.set_user_me_info(user_id, info[1])
+            sql.get_user_bio(user_id, info[1])
             message.reply_text("Updated your info!")
         else:
             message.reply_text(

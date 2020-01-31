@@ -17,7 +17,7 @@ from telegram.ext import CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html
 
 from hitsuki import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS
-from hitsuki.__main__ import STATS, USER_INFO
+from hitsuki.__main__ import STATS, USER_INFO, GDPR
 from hitsuki.modules.disable import DisableAbleCommandHandler
 from hitsuki.modules.helper_funcs.extraction import extract_user
 from hitsuki.modules.helper_funcs.filters import CustomFilters
