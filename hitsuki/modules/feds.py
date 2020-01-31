@@ -1148,24 +1148,25 @@ But then you have many groups, and you don't want this spammer to be in one of y
 No longer! With Federation, you can make a ban in one chat overlap with all other chats.
 You can even designate admin federations, so your trusted admin can ban all the chats you want to protect.
 
-*Command:*
- - /newfed <fedname>: create a new Federation with the name given. Users are only allowed to have one Federation. This method can also be used to rename the Federation. (max. 64 characters)
- - /delfed: delete your Federation, and any information related to it. Will not cancel blocked users.
- - /fedinfo <FedID>: information about the specified Federation.
- - /joinfed <FedID>: join the current chat to the Federation. Only chat owners can do this. Every chat can only be in one Federation.
- - /leavefed <FedID>: leave the Federation given. Only chat owners can do this.
- - /fpromote <user>: promote Users to give fed admin. Fed owner only.
- - /fdemote <user>: drops the User from the admin Federation to a normal User. Fed owner only.
- - /fban <user>: ban users from all federations where this chat takes place, and executors have control over.
- - /unfban <user>: cancel User from all federations where this chat takes place, and that the executor has control over.
+*Available commands:*
+ - /newfed <fedname>: Create a new Federation with the name given. Users are only allowed to have one Federation. This method can also be used to rename the Federation. (max. 64 characters)
+ - /delfed: Delete your Federation, and any information related to it. Will not cancel blocked users.
+ - /fedinfo <FedID>: Information about the specified Federation.
+ - /joinfed <FedID>: Join the current chat to the Federation. Only chat owners can do this. Every chat can only be in one Federation.
+ - /leavefed <FedID>: Leave the Federation given. Only chat owners can do this.
+ - /fpromote <user>: Promote Users to give fed admin. Fed owner only.
+ - /fdemote <user>: Drops the User from the admin Federation to a normal User. Fed owner only.
+ - /fban <user>: Ban users from all federations where this chat takes place, and executors have control over.
+ - /unfban <user>: Cancel User from all federations where this chat takes place, and that the executor has control over.
  - /setfrules: Arrange Federation rules.
  - /frules: See Federation regulations.
  - /chatfed: See the Federation in the current chat.
  - /fedadmins: Show Federation admin.
- - /fbroadcast <text>: Broadcast text to all groups that join the federation.
  - /fbanlist: Displays all users who are victimized at the Federation at this time.
  - /fedchats: Get all the chats that are connected in the Federation.
  - /importfbans: Reply to the Federation backup message file to import the banned list to the Federation now.
+ - /fbroadcast <text>: Broadcast text to all groups that join the federation.
+ - /myfeds: Get all your feds, only for feds owner.
 """
 
 NEW_FED_HANDLER = CommandHandler("newfed", new_fed)

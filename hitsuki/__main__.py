@@ -358,7 +358,7 @@ def help_button(bot: Bot, update: Update):
             if help_txt == False:
                 help_txt = HELPABLE[module].__help__
 
-            text = tld(chat.id, "Here is the help for the *{}* module:\n{}").format(mod_name, help_txt, disable_web_page_preview=True)
+            text = tld(chat.id, "Here is the help for the *{}* module:\n{}").format(mod_name, help_txt)
             query.message.reply_text(text=text,
                                      parse_mode=ParseMode.MARKDOWN,
                                      reply_markup=InlineKeyboardMarkup(
@@ -428,7 +428,7 @@ def get_help(bot: Bot, update: Update):
         if help_txt == False:
             help_txt = HELPABLE[module].__help__
 
-        text = tld(chat.id, "Here is the help for the *{}* module:\n{}").format(mod_name, help_txt, disable_web_page_preview=True)
+        text = tld(chat.id, "Here is the help for the *{}* module:\n{}").format(mod_name, help_txt)
         send_help(chat.id, text,
                   InlineKeyboardMarkup([[InlineKeyboardButton(text=tld(chat.id, "Back"), callback_data="help_back")]]))
 
