@@ -236,9 +236,9 @@ PortugueseBrStrings = {
 
     "The original sender, {}, has an ID of `{}`.\nThe forwarder, {}, has an ID of `{}`.":
         "O remetente, {}, tem o ID `{}`.\nO receptor, {}, tem o ID `{}`.",
-    "{}'s id is `{}`.": "{} ID - `{}`.",
-    "Your id is `{}`.": "Seu ID - `{}`.",
-    "This group's id is `{}`.": "ID deste grupo - `{}`.",
+    "{}'s id is `{}`.": "{} ID: `{}`.",
+    "Your id is `{}`.": "Seu ID: `{}`.",
+    "This group's id is `{}`.": "ID deste grupo: `{}`.",
 
     "I can't extract a user from this.": "Não consigo extrair o ID deste usuário",
     "<b>User info</b>:": "<b>Informações do usuário</b>:",
