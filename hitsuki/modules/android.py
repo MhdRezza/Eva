@@ -63,7 +63,7 @@ def device(bot, update, args):
 
 @run_async
 def odin(bot, update, args):
-    message = "Tool to download the stock firmware of your Samsung Galaxy\nDownload from below!"
+    message = "*Tool to flash the stock firmware of your Samsung Galaxy*\nDownload from below!\n\nYou can download a firmware by the `/getfw` command or on the @SamFirm channel"
     keyboard = [
         [InlineKeyboardButton("Odin", url="https://samfw.com/blog/download-odin-all-version-update-27-11-2019-odin-3-13-3"),
          InlineKeyboardButton("USB Drivers", url="https://developer.samsung.com/mobile/android-usb-driver.html")]
@@ -71,7 +71,7 @@ def odin(bot, update, args):
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
                              reply_to_message_id=update.message.message_id,
-                             reply_markup=reply_markup)
+                             reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
 
 
 @run_async
