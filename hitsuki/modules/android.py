@@ -69,7 +69,7 @@ def odin(bot, update, args):
          InlineKeyboardButton("USB Drivers", url="https://developer.samsung.com/mobile/android-usb-driver.html")]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    context.bot.send_message(chat_id=update.message.chat_id, text=message,
+    update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
                              reply_to_message_id=update.message.message_id,
                              reply_markup=reply_markup)
 
