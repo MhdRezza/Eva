@@ -62,6 +62,19 @@ def device(bot, update, args):
 
 
 @run_async
+def odin(update, context):
+    message = "Tool to download the stock firmware of your Samsung Galaxy\nDownload from below:"
+    keyboard = [
+        [InlineKeyboardButton("Odin", url="https://samfw.com/blog/download-odin-all-version-update-27-11-2019-odin-3-13-3"),
+         InlineKeyboardButton("USB Drivers", url="https://developer.samsung.com/mobile/android-usb-driver.html")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    context.bot.send_message(chat_id=update.message.chat_id, text=message,
+                             reply_to_message_id=update.message.message_id,
+                             reply_markup=reply_markup)
+
+
+@run_async
 def getfw(bot, update, args):
     if not len(args) == 2:
         reply = f'Give me something to fetch, like: <code>/getfw SM-N975F DBT</code>'
@@ -750,10 +763,11 @@ __help__ = """
 *Here you will have several useful commands for Android users!*
 
 *Useful tools:*
- - /device <codename>: gets android device basic info from its codename
- - /magisk: gets the latest magisk release for Stable/Beta/Canary
- - /twrp <codename>: gets latest twrp for the android device using the codename
- - /specs <brand> <device name>: will give you the complete specifications of a device
+ - /device <codename>: gets android device basic info from its codename.
+ - /magisk: gets the latest magisk release for Stable/Beta/Canary.
+ - /twrp <codename>: gets latest twrp for the android device using the codename.
+ - /specs <brand> <device name>: will give you the complete specifications of a device.
+ - /odin: receive the latest version of odin for Samsung devices.
  
 *Specific ROM for a device*
  - /aex <device> <android version>: Get the latest AEX ROM for a device
@@ -798,6 +812,7 @@ VIPER_HANDLER = CommandHandler("viper", viper, admin_ok=True)
 SPECS_HANDLER = CommandHandler("specs", specs, pass_args=True)
 GETFW_HANDLER = CommandHandler("getfw", getfw, pass_args=True)
 CHECKFW_HANDLER = CommandHandler("checkfw", checkfw, pass_args=True)
+ODIN_HANDLER = CommandHandler("odin", odin, pass_args=True)
 
 dispatcher.add_handler(DEVICE_HANDLER)
 dispatcher.add_handler(MAGISK_HANDLER)
@@ -819,3 +834,4 @@ dispatcher.add_handler(VIPER_HANDLER)
 dispatcher.add_handler(SPECS_HANDLER)
 dispatcher.add_handler(GETFW_HANDLER)
 dispatcher.add_handler(CHECKFW_HANDLER)
+dispatcher.add_handler(ODIN_HANDLER)
