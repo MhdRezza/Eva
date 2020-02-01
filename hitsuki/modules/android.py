@@ -62,7 +62,7 @@ def device(bot, update, args):
 
 
 @run_async
-def odin(bot, update):
+def odin(bot, update, args):
     message = "Tool to download the stock firmware of your Samsung Galaxy\nDownload from below!"
     keyboard = [
         [InlineKeyboardButton("Odin", url="https://samfw.com/blog/download-odin-all-version-update-27-11-2019-odin-3-13-3"),
