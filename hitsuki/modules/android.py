@@ -269,7 +269,7 @@ def aex(bot: Bot, update: Update, args: List[str]):
                                                 parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
             return
     else:
-        reply = f"No builds found for the provided device and version combo.\n\n*Versions:* `pie`, `pie_gapps`, `q`, `q_gapps`"
+        reply_text = "No builds found for the provided device and version combo.\n\n*Versions:* `pie`, `pie_gapps`, `q`, `q_gapps`"
     message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
