@@ -84,7 +84,7 @@ def gsis(bot, update, args):
     reply_markup = InlineKeyboardMarkup(keyboard)
     update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
                              reply_to_message_id=update.message.message_id,
-                             reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
+                             reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 @run_async
