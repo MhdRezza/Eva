@@ -270,9 +270,7 @@ def aex(bot: Bot, update: Update, args: List[str]):
             return
     else:
         reply = f"No builds found for the provided device and version combo.\n\n*Versions:* `pie`, `pie_gapps`, `q`, `q_gapps`"
-        update.effective_message.reply_text("{}".format(reply),
-                    parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-        return
+    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 @run_async
