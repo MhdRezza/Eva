@@ -570,6 +570,7 @@ __help__ = """
  - /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
  - /exec <language> <code> [/stdin <stdin>]: Execute a code in a specified language. Send an empty command to get the supported languages.
  - /wiki <keywords>: Get wikipedia articles just using this bot!
+ - /gps <location>: the bot will send a map preview along with the Google Maps link to the location.
 
 *Other things:*
  - /runs: reply a random string from an array of replies.
