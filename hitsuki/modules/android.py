@@ -797,6 +797,9 @@ __help__ = """
  - /posp <device>: Get the latest POSP ROM for a device
  - /viper <device>: Get the latest Viper ROM for a device
 
+*GSIs:*
+ - /gsis: I will send a list of Telegram channels recommended by my creator for you to download GSIs
+
 *Firmwares:*
  - /getfw <model> <csc>: (SAMSUNG ONLY) gets firmware download links from samfrew, sammobile and sfirmwares for the given device.
  - /checkfw <model> <csc>: (SAMSUNG ONLY) shows the latest firmware info for the given device, taken from samsung server.
