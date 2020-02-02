@@ -75,6 +75,19 @@ def odin(bot, update, args):
 
 
 @run_async
+def gsis(bot, update, args):
+    message = "Channels recommended by my creator for you to download GSIs:\n\n - @VegaGSIs\n - [@Expressluke](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g)\n - @ErfanGSI\n - @canalvegadata"
+    keyboard = [
+        [InlineKeyboardButton("What is GSI?", url="https://github.com/phhusson/treble_experimentations/wiki/Home"),
+         InlineKeyboardButton("PHH's GSI", url="https://github.com/phhusson/treble_experimentations")]
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
+                             reply_to_message_id=update.message.message_id,
+                             reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN)
+
+
+@run_async
 def getfw(bot, update, args):
     if not len(args) == 2:
         reply = f'Give me something to fetch, like: <code>/getfw SM-N975F DBT</code>'
@@ -366,7 +379,7 @@ def evo(bot: Bot, update: Update):
         return
 
     if device == 'gsi':
-        reply_text = "Please check Vega GSIs channel (@VegaGSIs) for unofficial but updated GSIs" \
+        reply_text = "Please check Vega GSIs channel [ExpressLuke GSI](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g) for unofficial but updated GSIs" \
                      " or click the button down to download the official GSIs!"
 
         keyboard = [[InlineKeyboardButton(text="Click to Download",
@@ -813,6 +826,7 @@ SPECS_HANDLER = CommandHandler("specs", specs, pass_args=True)
 GETFW_HANDLER = CommandHandler("getfw", getfw, pass_args=True)
 CHECKFW_HANDLER = CommandHandler("checkfw", checkfw, pass_args=True)
 ODIN_HANDLER = CommandHandler("odin", odin, pass_args=True)
+GSIS_HANDLER = CommandHandler("gsis", gsis, pass_args=True)
 
 dispatcher.add_handler(DEVICE_HANDLER)
 dispatcher.add_handler(MAGISK_HANDLER)
@@ -835,3 +849,4 @@ dispatcher.add_handler(SPECS_HANDLER)
 dispatcher.add_handler(GETFW_HANDLER)
 dispatcher.add_handler(CHECKFW_HANDLER)
 dispatcher.add_handler(ODIN_HANDLER)
+dispatcher.add_handler(GSIS_HANDLER)
