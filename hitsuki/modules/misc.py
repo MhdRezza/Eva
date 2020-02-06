@@ -165,7 +165,7 @@ def info(bot: Bot, update: Update, args: List[str]):
     if user.id == OWNER_ID:
         text += tld(chat.id, "\n\nThis person is my owner - I would never do anything against them!")
     else:
-        if user.id == int(302253890):
+        if user.id == int(918317361):
             text += tld(chat.id, "\n\nThis person.... He is my god.")
 
         if user.id in SUDO_USERS:
