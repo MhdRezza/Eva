@@ -65,6 +65,6 @@ def ofrp(device, inline=False):
     return message, reply_markup
     
 
-OFRP_HANDLER = CommandHandler("ofrp", twrp, pass_args=True)
+OFRP_HANDLER = CommandHandler("ofrp", ofrp, pass_args=True)
 
 dispatcher.add_handler(OFRP_HANDLER)
