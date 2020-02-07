@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.7
-"""custom recovery downloads scraper"""
+"""custom recovery downloads scraper [originally module of the bot @XiaomiGeeksBot"""
 # pylint: disable=too-many-locals
 
 from uuid import uuid4
@@ -9,7 +9,7 @@ from requests import get
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, \
     InlineQueryResultArticle, InputTextMessageContent, ParseMode
 
-from uranus_bot.modules.mwt import MWT
+from hitsuki.modules.mwt import MWT
 
 
 @MWT(timeout=60 * 60 * 2)
