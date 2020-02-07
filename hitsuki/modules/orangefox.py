@@ -4,6 +4,7 @@
 
 from uuid import uuid4
 from telegram.ext import CommandHandler
+from hitsuki import dispatcher
 
 from bs4 import BeautifulSoup
 from requests import get
