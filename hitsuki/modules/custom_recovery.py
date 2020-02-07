@@ -62,3 +62,8 @@ def ofrp(device, inline=False):
                 message, parse_mode=ParseMode.MARKDOWN), reply_markup=reply_markup)]
         return results
     return message, reply_markup
+    
+
+OFRP_HANDLER = CommandHandler("ofrp", twrp, pass_args=True)
+
+dispatcher.add_handler(OFRP_HANDLER)
