@@ -22,7 +22,7 @@ def thonkify(bot: Bot, update: Update):
 
     # the processed photo becomes too long and unreadable + the telegram doesn't support any longer dimensions + you have the lulz.
     if (len(msg)) > 39:
-        message.reply_text(tld(chat.id, "Thonk yourself!")
+        message.reply_text(tld(chat.id, "Thonk yourself!"))
         return
 
     tracking = Image.open(BytesIO(base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAYAAAOACAYAAAAZzQIQAAAALElEQVR4nO3BAQ0AAADCoPdPbQ8HFAAAAAAAAAAAAAAAAAAAAAAAAAAAAPwZV4AAAfA8WFIAAAAASUVORK5CYII='))) # base64 encoded empty image(but longer)
