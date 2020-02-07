@@ -11,26 +11,14 @@ from requests import get
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, \
     InlineQueryResultArticle, InputTextMessageContent, ParseMode
 
-from hitsuki.modules.mwt import MWT
 
-
-@MWT(timeout=60 * 60 * 2)
-def load_ofrp_data():
-    """
-    load latest json file every six hours
-    :returns data
-    """
-    return get("https://files.orangefox.tech/Others/update_v2.json").json()
-
-
-@MWT(timeout=60 * 60 * 2)
 def ofrp(device, inline=False):
     """
     fetch latest ofrp links for a device
     :argument device - Xiaomi device codename
     :returns message - telegram message string
     """
-    data = load_ofrp_data()
+    data = f'https://files.orangefox.tech/Others/update_v2.json'
     url = f'https://files.orangefox.tech/OrangeFox'
     try:
         info = data[device]
