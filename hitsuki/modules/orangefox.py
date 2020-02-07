@@ -3,6 +3,7 @@
 # pylint: disable=too-many-locals
 
 from uuid import uuid4
+from telegram.ext import CommandHandler
 
 from bs4 import BeautifulSoup
 from requests import get
