@@ -269,7 +269,7 @@ def check_and_ban(update, user_id, should_message=True):
                 usrreason = "No reason given"
 
             update.effective_message.reply_text(tld(f"*This user is gbanned and has been removed.*\nReason: `{usrreason}`",
-                                                parse_mode=ParseMode.MARKDOWN)
+                                                parse_mode=ParseMode.MARKDOWN))
 
 
 @run_async
