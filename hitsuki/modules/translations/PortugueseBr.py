@@ -255,6 +255,8 @@ PortugueseBrStrings = {
     "\nThis person has been whitelisted! That means I'm not allowed to ban/kick them.":
         "\n\nEssa pessoa está na lista branca. Isso significa que eu não posso banir ou removê-la.",
 
+    "Thonk yourself!": "Pense você mesmo!",
+
     "<b>About user:</b>\n{bio}\n": "<b>Sobre o usuário:</b>\n{bio}\n",
 
     "Its always banhammer time for me!": "É sempre a hora do martelo do ban para mim!",
@@ -371,6 +373,8 @@ PortugueseBrStrings = {
 "\nGlobally muted: <b>{}</b>": "\nSilenciado globalmente: <b>{}</b>",
 "\nReason: {}": "\nMotivo: {}",
 
+"*This user is gbanned and has been removed.*\nReason: `{usrreason}`": "*Este usuário foi gbanido e por isso foi removido.*\nMotivo: `{usrreason}`",
+
 "You don't seem to be referring to a user.": "Você não parece estar se referindo a um usuário.",
 "I spy with my little eyes... a sudo user war! Why are you guys turning on each other?": "Eu espio com meus olhinhos... uma guerra de usuários sudo! Por que vocês estão se atacando?",
 "OOOH, someone's trying to gban a support user! *grabs popcorn*": "OOOH, alguém está tentando Banir Globalmente um usuário de suporte! *pegando pipoca*",
@@ -389,6 +393,7 @@ PortugueseBrStrings = {
     "I really wish I could ban admins...": "Eu gostaria de poder banir administradores porem...",
     "I'm not gonna BAN myself, are you crazy?": "Não vou banir eu mesmo, está ficando loco?",
     "Banned!": "Banido!",
+    "Kicked!": "Removido!",
     "Well damn, I can't ban that user.": "Merda, não consigo banir este usuário!.",
     "You haven't specified a time to ban this user for!": 
         "No foi especificado o tempo para deixar este usuários banido este usuario!",
