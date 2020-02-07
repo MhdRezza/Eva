@@ -12,7 +12,7 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, \
     InlineQueryResultArticle, InputTextMessageContent, ParseMode
 
 
-def ofrp(device, inline=False):
+def ofrp(bot, update, args):
     """
     fetch latest ofrp links for a device
     :argument device - Xiaomi device codename
