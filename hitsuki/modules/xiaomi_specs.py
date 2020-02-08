@@ -13,7 +13,7 @@ from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 @run_async
 def xspecs(bot, update, args):
     device = " ".join(args)
-    message = ''
+    message = xspecs(device)
     if len(args) == 0:
         reply = f'No codename provided, write a codename for fetching informations.'
         update.effective_message.reply_text("{}".format(reply),
