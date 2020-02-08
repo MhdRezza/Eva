@@ -869,7 +869,7 @@ __help__ = """
 *GSIs:*
  - /gsis: Get a list of Telegram channels recommended by my creator for you to download GSIs
  - /phh: Get the latest PHH GSI.
- - /enesgsi: Get the latest Enes GSI.
+ - /enes: Get the latest Enes GSI.
 
 *Firmwares:*
  - /getfw <model> <csc>: (SAMSUNG ONLY) gets firmware download links from samfrew, sammobile and sfirmwares for the given device.
