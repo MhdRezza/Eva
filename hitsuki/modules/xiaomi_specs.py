@@ -81,7 +81,7 @@ def xspecs(bot, update, args):
         message += f"\n*Charging*: {charging}"
     except KeyError:
         pass
-    return message
+    return
     
 
 XSPECS_HANDLER = CommandHandler("xspecs", xspecs, pass_args=True)
