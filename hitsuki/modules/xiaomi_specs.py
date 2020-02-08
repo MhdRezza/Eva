@@ -11,10 +11,12 @@ from telegram.ext.dispatcher import run_async
 
 
 @run_async
-def xspecs(bot, update, context, args):
+def xspecs(bot, update, args):
     """reply with device's specs"""
-    if not context.args:
-        message = 'Usage: /specs codename'
+    if len(args) == 0:
+        reply = f'No codename provided, write a codename for fetching informations.'
+        update.effective_message.reply_text("{}".format(reply),
+                    parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
         return
     device = context.args[0].lower().split('_')[0]
     if not message:
