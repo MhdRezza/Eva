@@ -11,7 +11,7 @@ from telegram.ext.dispatcher import run_async
 
 
 @run_async
-def xspecs(update, context):
+def xspecs(bot, update, context, args):
     """reply with device's specs"""
     if not context.args:
         message = 'Usage: /specs codename'
