@@ -8,11 +8,12 @@ from requests import get
 from hitsuki import dispatcher
 from telegram.ext import CommandHandler
 from telegram.ext.dispatcher import run_async
-
+from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 
 @run_async
 def xspecs(bot, update, args):
     device = " ".join(args)
+    message = gsmarena.specs(device)
     if len(args) == 0:
         reply = f'No codename provided, write a codename for fetching informations.'
         update.effective_message.reply_text("{}".format(reply),
