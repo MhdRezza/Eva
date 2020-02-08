@@ -18,11 +18,11 @@ def xspecs(bot, update, args):
         update.effective_message.reply_text("{}".format(reply),
                     parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
         return
+    message = ''
     device = " ".join(args)
     if not message:
         message = f"Cannot find {device} specs!"
         return
-    message = ''
     data = get(
         "https://raw.githubusercontent.com/XiaomiFirmwareUpdater/xiaomi_devices" +
         "/gsmarena/devices.json").json()
