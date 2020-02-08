@@ -26,6 +26,7 @@ from hitsuki.modules.helper_funcs.misc import split_message
 
 LOGGER.info("Original Android Modules by @RealAkito on Telegram, modified by @HitaloSama on Telegram")
 
+WIKI = 'https://xiaomiwiki.github.io/wiki'
 GITHUB = 'https://github.com'
 DEVICES_DATA = 'https://raw.githubusercontent.com/androidtrackers/certified-android-devices/master/devices.json'
 
@@ -101,6 +102,35 @@ def edxposed(bot: Bot, update: Update, args: List[str]):
         except IndexError:
             continue
     message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
+
+    
+def mitools(bot, update, args):
+    """
+    various tools for Xiaomi devices
+    :returns message - telegram message string
+    """
+    url = f'{WIKI}/Tools_for_Xiaomi_devices.html'
+    message = "Tools for Xiaomi devices"
+    reply_markup = InlineKeyboardMarkup([
+        [InlineKeyboardButton("Mi Flash Tool", f'{url}#miflash-by-xiaomi'),
+         InlineKeyboardButton("MiFlash Pro", f'{url}#miflash-pro-by-xiaomi'),
+         InlineKeyboardButton("Mi Unlock Tool", f'{url}#miunlock-by-xiaomi')],
+        [InlineKeyboardButton("XiaomiTool", f'{url}#xiaomitool-v2-by-francesco-tescari'),
+         InlineKeyboardButton("XiaomiADB", f'{url}#xiaomiadb-by-francesco-tescari'),
+         InlineKeyboardButton("Unofficial MiUnlock",
+                              f'{url}#miunlocktool-by-francesco-tescari')],
+        [InlineKeyboardButton("Xiaomi ADB/Fastboot Tools",
+                              f'{url}#xiaomi-adbfastboot-tools-by-saki_eu'),
+         InlineKeyboardButton("More Tools", f'{url}')]
+    ])
+    if inline:
+        results = [InlineQueryResultArticle(
+            id=uuid4(),
+            title=f"Useful tools for Xiaomi devices",
+            input_message_content=InputTextMessageContent(
+                message, parse_mode=ParseMode.MARKDOWN), reply_markup=reply_markup)]
+        return results
+    return message, reply_markup
 
 
 @run_async
@@ -516,8 +546,8 @@ def miui(bot: Bot, update: Update):
         message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
         return
 
-    result = "<b>Recovery ROM</b>\n\n"
-    result += "<b>Stable</b>\n"
+    result = "<b>Recovery ROMs:</b>\n\n"
+    result += "<b>Stable:</b>\n"
     stable_all = yaml.load(get(giturl + "stable_recovery/stable_recovery.yml").content, Loader=yaml.FullLoader)
     data = [i for i in stable_all if device == i['codename']]
     if len(data) != 0:
@@ -528,7 +558,7 @@ def miui(bot: Bot, update: Update):
             result += "<b>Version:</b> " + i ['version'] + "\n"
             result += "<b>Android:</b> " + i ['android'] + "\n\n"
 
-        result += "<b>Weekly</b>\n"
+        result += "<b>Weekly:</b>\n"
         weekly_all = yaml.load(get(giturl + "weekly_recovery/weekly_recovery.yml").content, Loader=yaml.FullLoader)
         data = [i for i in weekly_all if device == i['codename']]
         for i in data:
@@ -881,6 +911,7 @@ GSIS_HANDLER = CommandHandler("gsis", gsis, pass_args=True)
 ENES_HANDLER = CommandHandler("enes", enesrelease, pass_args=True, admin_ok=True)
 PHH_HANDLER = CommandHandler("phh", phh, pass_args=True, admin_ok=True)
 EDXPOSED_HANDLER = CommandHandler("edxposed", edxposed, pass_args=True, admin_ok=True)
+MITOOLS_HANDLER = CommandHandler("mitools", mitools, pass_args=True, admin_ok=True)
 
 dispatcher.add_handler(DEVICE_HANDLER)
 dispatcher.add_handler(MAGISK_HANDLER)
@@ -907,3 +938,4 @@ dispatcher.add_handler(GSIS_HANDLER)
 dispatcher.add_handler(ENES_HANDLER)
 dispatcher.add_handler(PHH_HANDLER)
 dispatcher.add_handler(EDXPOSED_HANDLER)
+dispatcher.add_handler(MITOOLS_HANDLER
