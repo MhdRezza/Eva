@@ -95,7 +95,7 @@ def edxposed(bot: Bot, update: Update, args: List[str]):
         try:
             name = usr['assets'][i]['name']
             url = usr['assets'][i]['browser_download_url']
-            reply_text += f" - [{name}]({url})\n"
+            reply_text += f"[{name}]({url})\n\n"
             keyboard = [[InlineKeyboardButton(text="Repository", url=f"https://github.com/ElderDrivers/EdXposed")]]
             keyboard += [[InlineKeyboardButton(text="EdXposed Manager", url=f"https://github.com/ElderDrivers/EdXposedManager")]]
         except IndexError:
@@ -797,7 +797,7 @@ def enesrelease(bot: Bot, update: Update, args: List[str]):
         try:
             name = usr['assets'][i]['name']
             url = usr['assets'][i]['browser_download_url']
-            reply_text += f" - [{name}]({url})\n"
+            reply_text += f"[{name}]({url})\n"
         except IndexError:
             continue
     message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
@@ -811,7 +811,7 @@ def phh(bot: Bot, update: Update, args: List[str]):
         try:
             name = usr['assets'][i]['name']
             url = usr['assets'][i]['browser_download_url']
-            reply_text += f" - [{name}]({url})\n"
+            reply_text += f"[{name}]({url})\n"
         except IndexError:
             continue
     message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
