@@ -11,7 +11,7 @@ from telegram.ext.dispatcher import run_async
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 
 @run_async
-def xspecs(bot, update, args):
+def xspecs(bot, update: Update, args: List[str]) -> str):
     device = " ".join(args)
     message = xspecs(device)
     if len(args) == 0:
