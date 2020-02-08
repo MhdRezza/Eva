@@ -110,7 +110,7 @@ def mitools(bot, update, args):
     :returns message - telegram message string
     """
     url = f'{WIKI}/Tools_for_Xiaomi_devices.html'
-    message = "Tools for Xiaomi devices"
+    message = "Useful tools for Xiaomi devices"
     reply_markup = InlineKeyboardMarkup([
         [InlineKeyboardButton("Mi Flash Tool", f'{url}#miflash-by-xiaomi'),
          InlineKeyboardButton("MiFlash Pro", f'{url}#miflash-pro-by-xiaomi'),
@@ -123,13 +123,6 @@ def mitools(bot, update, args):
                               f'{url}#xiaomi-adbfastboot-tools-by-saki_eu'),
          InlineKeyboardButton("More Tools", f'{url}')]
     ])
-    if inline:
-        results = [InlineQueryResultArticle(
-            id=uuid4(),
-            title=f"Useful tools for Xiaomi devices",
-            input_message_content=InputTextMessageContent(
-                message, parse_mode=ParseMode.MARKDOWN), reply_markup=reply_markup)]
-        return results
     return message, reply_markup
 
 
