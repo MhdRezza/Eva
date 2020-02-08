@@ -12,16 +12,11 @@ from telegram.ext.dispatcher import run_async
 
 @run_async
 def xspecs(bot, update, args):
-    """reply with device's specs"""
+    device = " ".join(args)
     if len(args) == 0:
         reply = f'No codename provided, write a codename for fetching informations.'
         update.effective_message.reply_text("{}".format(reply),
                     parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-        return
-    message = ''
-    device = " ".join(args)
-    if not message:
-        message = f"Cannot find {device} specs!"
         return
     data = get(
         "https://raw.githubusercontent.com/XiaomiFirmwareUpdater/xiaomi_devices" +
