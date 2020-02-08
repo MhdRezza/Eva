@@ -76,7 +76,7 @@ def odin(bot, update, args):
 
 @run_async
 def gsis(bot, update, args):
-    message = "Channels recommended by my creator for you to download GSIs:\n\n - @VegaGSIs\n - [@Expressluke](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g)\n - @ErfanGSI\n - @canalvegadata"
+    message = "*Channels recommended by my creator for you to download GSIs:*\n\n - @VegaGSIs\n - [@Expressluke](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g)\n - @ErfanGSI\n - @canalvegadata"
     keyboard = [
         [InlineKeyboardButton("What is GSI?", url="https://github.com/phhusson/treble_experimentations/wiki/Home"),
          InlineKeyboardButton("PHH's GSI", url="https://github.com/phhusson/treble_experimentations")]
@@ -85,6 +85,24 @@ def gsis(bot, update, args):
     update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
                              reply_to_message_id=update.message.message_id,
                              reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
+
+
+def edxposed(bot: Bot, update: Update, args: List[str]):
+    message = update.effective_message
+    usr = get(f'https://api.github.com/repos/elderdrivers/edxposed/releases/latest').json()
+    reply_text = "*Latest EdXposed release(s):*\n"
+    for i in range(len(usr)):
+        try:
+            name = usr['assets'][i]['name']
+            url = usr['assets'][i]['browser_download_url']
+            reply_text += f"[{name}]({url})\n"
+            keyboard = [[InlineKeyboardButton(text="Repository", url=f"https://github.com/ElderDrivers/EdXposed")]]
+            keyboard += [[InlineKeyboardButton(text="EdXposed Manager", url=f"https://github.com/ElderDrivers/EdXposedManager")]]
+            message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(keyboard)
+
+        except IndexError:
+            continue
+    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
 
 
 @run_async
@@ -380,7 +398,7 @@ def evo(bot: Bot, update: Update):
         return
 
     if device == 'gsi':
-        reply_text = "Please check Vega GSIs channel [ExpressLuke GSI](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g) for unofficial but updated GSIs" \
+        reply_text = "Please check [ExpressLuke GSI](http://t.me/joinchat/AAAAAEjIRhZRX1mOZpLR5g) for unofficial but updated GSIs" \
                      " or click the button down to download the official GSIs!"
 
         keyboard = [[InlineKeyboardButton(text="Click to Download",
@@ -773,6 +791,34 @@ def specs(bot, update, args):
     update.effective_message.reply_html(reply)
 
 
+def enesrelease(bot: Bot, update: Update, args: List[str]):
+    message = update.effective_message
+    usr = get(f'https://api.github.com/repos/EnesSastim/Downloads/releases/latest').json()
+    reply_text = "*Enes Sastim's lastest releases(s):*\n"
+    for i in range(len(usr)):
+        try:
+            name = usr['assets'][i]['name']
+            url = usr['assets'][i]['browser_download_url']
+            reply_text += f"[{name}]({url})\n"
+        except IndexError:
+            continue
+    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
+
+
+def phh(bot: Bot, update: Update, args: List[str]):
+    message = update.effective_message
+    usr = get(f'https://api.github.com/repos/phhusson/treble_experimentations/releases/latest').json()
+    reply_text = "*Phh's lastest release(s):*\n"
+    for i in range(len(usr)):
+        try:
+            name = usr['assets'][i]['name']
+            url = usr['assets'][i]['browser_download_url']
+            reply_text += f"[{name}]({url})\n"
+        except IndexError:
+            continue
+    message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
+
+
 __help__ = """
 *Here you will have several useful commands for Android users!*
 
@@ -799,7 +845,9 @@ __help__ = """
  - /viper <device>: Get the latest Viper ROM for a device
 
 *GSIs:*
- - /gsis: I will send a list of Telegram channels recommended by my creator for you to download GSIs
+ - /gsis: Get a list of Telegram channels recommended by my creator for you to download GSIs
+ - /phh: Get the latest PHH GSI.
+ - /enesgsi: Get the latest Enes GSI.
 
 *Firmwares:*
  - /getfw <model> <csc>: (SAMSUNG ONLY) gets firmware download links from samfrew, sammobile and sfirmwares for the given device.
@@ -831,6 +879,8 @@ GETFW_HANDLER = CommandHandler("getfw", getfw, pass_args=True)
 CHECKFW_HANDLER = CommandHandler("checkfw", checkfw, pass_args=True)
 ODIN_HANDLER = CommandHandler("odin", odin, pass_args=True)
 GSIS_HANDLER = CommandHandler("gsis", gsis, pass_args=True)
+ENES_HANDLER = CommandHandler("enes", enesrelease, pass_args=True, admin_ok=True)
+PHH_HANDLER = CommandHandler("phh", phh, pass_args=True, admin_ok=True)
 
 dispatcher.add_handler(DEVICE_HANDLER)
 dispatcher.add_handler(MAGISK_HANDLER)
@@ -854,3 +904,5 @@ dispatcher.add_handler(GETFW_HANDLER)
 dispatcher.add_handler(CHECKFW_HANDLER)
 dispatcher.add_handler(ODIN_HANDLER)
 dispatcher.add_handler(GSIS_HANDLER)
+dispatcher.add_handler(ENES_HANDLER)
+dispatcher.add_handler(PHH_HANDLER)
