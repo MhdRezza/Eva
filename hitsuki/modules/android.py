@@ -821,11 +821,12 @@ __help__ = """
 *Here you will have several useful commands for Android users!*
 
 *Useful tools:*
- - /device <codename>: gets android device basic info from its codename.
- - /magisk: gets the latest magisk release for Stable/Beta/Canary.
+ - /device <codename>: Get android device basic info from its codename.
+ - /magisk: Get the latest magisk release for Stable/Beta/Canary.
  - /twrp <codename>: gets latest twrp for the android device using the codename.
  - /specs <brand> <device name>: will give you the complete specifications of a device.
- - /odin: receive the latest version of odin for Samsung devices.
+ - /odin: Get the latest version of odin for Samsung devices.
+ - /edxposed: Get the latest EdXposed releases.
  
 *Specific ROM for a device*
  - /aex <device> <android version>: Get the latest AEX ROM for a device
@@ -879,6 +880,7 @@ ODIN_HANDLER = CommandHandler("odin", odin, pass_args=True)
 GSIS_HANDLER = CommandHandler("gsis", gsis, pass_args=True)
 ENES_HANDLER = CommandHandler("enes", enesrelease, pass_args=True, admin_ok=True)
 PHH_HANDLER = CommandHandler("phh", phh, pass_args=True, admin_ok=True)
+EDXPOSED_HANDLER = CommandHandler("edxposed", edxposed, pass_args=True, admin_ok=True)
 
 dispatcher.add_handler(DEVICE_HANDLER)
 dispatcher.add_handler(MAGISK_HANDLER)
@@ -904,3 +906,4 @@ dispatcher.add_handler(ODIN_HANDLER)
 dispatcher.add_handler(GSIS_HANDLER)
 dispatcher.add_handler(ENES_HANDLER)
 dispatcher.add_handler(PHH_HANDLER)
+dispatcher.add_handler(EDXPOSED_HANDLER)
