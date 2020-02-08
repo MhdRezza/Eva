@@ -63,7 +63,7 @@ def xspecs(bot, update, args):
     usb = details['Comms'][0]['USB']
     sensors = details['Features'][0]['Sensors']
     battery = details['Battery'][0]['info']
-    message += f"[{name}]({url}) - *{device}*\n" \
+    message =  f"[{name}]({url}) - *{device}*\n" \
                f"*Status*: {device_status}\n" \
                f"*Network:* {network}\n" \
                f"*Weight*: {weight}\n" \
