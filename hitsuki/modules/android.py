@@ -103,15 +103,11 @@ def edxposed(bot: Bot, update: Update, args: List[str]):
             continue
     message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(keyboard), parse_mode=ParseMode.MARKDOWN)
 
-    
+@run_async
 def mitools(bot, update, args):
-    """
-    various tools for Xiaomi devices
-    :returns message - telegram message string
-    """
     url = f'{WIKI}/Tools_for_Xiaomi_devices.html'
     message = "Useful tools for Xiaomi devices"
-    reply_markup = InlineKeyboardMarkup([
+    keyboard = [
         [InlineKeyboardButton("Mi Flash Tool", f'{url}#miflash-by-xiaomi'),
          InlineKeyboardButton("MiFlash Pro", f'{url}#miflash-pro-by-xiaomi'),
          InlineKeyboardButton("Mi Unlock Tool", f'{url}#miunlock-by-xiaomi')],
@@ -122,8 +118,11 @@ def mitools(bot, update, args):
         [InlineKeyboardButton("Xiaomi ADB/Fastboot Tools",
                               f'{url}#xiaomi-adbfastboot-tools-by-saki_eu'),
          InlineKeyboardButton("More Tools", f'{url}')]
-    ])
-    return message, reply_markup
+    ]
+    reply_markup = InlineKeyboardMarkup(keyboard)
+    update.effective_message.bot.send_message(chat_id=update.message.chat_id, text=message,
+                             reply_to_message_id=update.message.message_id,
+                             reply_markup=reply_markup, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
 
 
 @run_async
