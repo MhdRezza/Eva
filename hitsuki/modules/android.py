@@ -849,7 +849,8 @@ __help__ = """
  - /specs <brand> <device name>: will give you the complete specifications of a device.
  - /odin: Get the latest version of odin for Samsung devices.
  - /edxposed: Get the latest EdXposed releases.
- 
+ - /mitools: Get useful tools for Xiaomi devices.
+
 *Specific ROM for a device*
  - /aex <device> <android version>: Get the latest AEX ROM for a device
  - /bootleggers <device>: Get the latest Bootleggers ROM for a device
