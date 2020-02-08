@@ -99,7 +99,6 @@ def edxposed(bot: Bot, update: Update, args: List[str]):
             keyboard = [[InlineKeyboardButton(text="Repository", url=f"https://github.com/ElderDrivers/EdXposed")]]
             keyboard += [[InlineKeyboardButton(text="EdXposed Manager", url=f"https://github.com/ElderDrivers/EdXposedManager")]]
             message.reply_text(reply_text, reply_markup=InlineKeyboardMarkup(keyboard)
-
         except IndexError:
             continue
     message.reply_text(reply_text, parse_mode=ParseMode.MARKDOWN)
