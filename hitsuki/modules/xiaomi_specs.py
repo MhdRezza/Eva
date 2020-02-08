@@ -18,7 +18,7 @@ def xspecs(bot, update, args):
         update.effective_message.reply_text("{}".format(reply),
                     parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
         return
-    device = context.args[0].lower().split('_')[0]
+    device = " ".join(args)
     if not message:
         message = f"Cannot find {device} specs!"
         return
