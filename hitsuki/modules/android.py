@@ -938,4 +938,4 @@ dispatcher.add_handler(GSIS_HANDLER)
 dispatcher.add_handler(ENES_HANDLER)
 dispatcher.add_handler(PHH_HANDLER)
 dispatcher.add_handler(EDXPOSED_HANDLER)
-dispatcher.add_handler(MITOOLS_HANDLER
+dispatcher.add_handler(MITOOLS_HANDLER)
