@@ -83,6 +83,6 @@ def xspecs(bot, update, args):
     return message
     
 
-XSPECS_HANDLER = CommandHandler("xspecs", xpecs, pass_args=True)
+XSPECS_HANDLER = CommandHandler("xspecs", xspecs, pass_args=True)
 
 dispatcher.add_handler(XSPECS_HANDLER) 
