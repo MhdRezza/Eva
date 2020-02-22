@@ -1,6 +1,9 @@
 import html
 import random
 import re
+import urllib.request
+import urllib.parse
+
 from datetime import datetime
 from typing import Optional, List
 
