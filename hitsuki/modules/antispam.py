@@ -414,7 +414,7 @@ You can improve your Antispam protection by using the /setcas command to enable 
 Thanks to @nunopenim for providing his proprietary Combot Anti Spam System API - [(pyCombotCAS_API)](https://github.com/nunopenim/pyCombotCAS_API)
 """
 
-__mod_name__ = "Antispam security"
+__mod_name__ = "Anti-Spam"
 
 ANTISPAM_STATUS = CommandHandler("antispam", antispam, pass_args=True, filters=Filters.group)
 

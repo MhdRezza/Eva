@@ -50,7 +50,7 @@ def unbl_user(bot: Bot, update: Update, args):
         rep.reply_text("User isn't even blacklisted!")
         
         
-def __user_info__(user_id):
+def __user_info__(user_id, chat_id):
     is_blacklisted = sql.is_user_blacklisted(user_id)
     
     text = "Blacklisted: <b>{}</b>"
