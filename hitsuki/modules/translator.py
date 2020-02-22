@@ -5,8 +5,8 @@ from telegram import MessageEntity
 from telegram.ext import Filters, MessageHandler, run_async
 from telegram import ParseMode
 
-from tg_bot import dispatcher, LOGGER
-from tg_bot.modules.disable import DisableAbleCommandHandler
+from hitsuki import dispatcher, LOGGER
+from hitsuki.modules.disable import DisableAbleCommandHandler
 from emoji import UNICODE_EMOJI
 
 from googletrans import Translator
