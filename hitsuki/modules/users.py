@@ -7,7 +7,7 @@ from typing import Optional
 from telegram import ParseMode
 from telegram import TelegramError, Chat, Message
 from telegram import Update, Bot
-from telegram.error import BadRequest
+from telegram.error import BadRequest, Unauthorized
 from telegram.ext import MessageHandler, Filters, CommandHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown
@@ -115,6 +115,25 @@ def chats(bot: Bot, update: Update):
         output.name = "chatlist.txt"
         update.effective_message.reply_document(document=output, filename="chatlist.txt",
                                                 caption="Here is the list of chats in my database.")
+
+
+@run_async
+def rem_chat(bot: Bot, update: Update):
+    msg = update.effective_message
+    chats = sql.get_all_chats()
+    kicked_chats = 0
+    for chat in chats:
+        id = chat.chat_id
+        sleep(0.1) # Reduce floodwait
+        try:
+            bot.get_chat(id, timeout=60)
+        except (BadRequest, Unauthorized):
+            kicked_chats += 1
+            sql.rem_chat(id)
+    if kicked_chats >= 1:
+        msg.reply_text("Done! {} chats were removed from the database!".format(kicked_chats))
+    else:
+        msg.reply_text("No chats had to be removed from the database!")
 
 
 @run_async
@@ -257,6 +276,7 @@ SNIPE_HANDLER = CommandHandler("snipe", snipe, pass_args=True, filters=Filters.u
 BANALL_HANDLER = CommandHandler("banall", banall, pass_args=True, filters=Filters.user(OWNER_ID))
 GETLINK_HANDLER = CommandHandler("getlink", getlink, pass_args=True, filters=Filters.user(OWNER_ID))
 LEAVECHAT_HANDLER = CommandHandler("leavechat", leavechat, pass_args=True, filters=Filters.user(OWNER_ID))
+DELETE_CHATS_HANDLER = CommandHandler("cleanchats", rem_chat, filters=Filters.user(OWNER_ID))
 SLIST_HANDLER = CommandHandler("slist", slist,
                                filters=CustomFilters.sudo_filter | CustomFilters.support_filter)
 
@@ -268,3 +288,4 @@ dispatcher.add_handler(SLIST_HANDLER)
 dispatcher.add_handler(USER_HANDLER, USERS_GROUP)
 dispatcher.add_handler(BROADCAST_HANDLER)
 dispatcher.add_handler(CHATLIST_HANDLER)
+dispatcher.add_handler(DELETE_CHATS_HANDLER)

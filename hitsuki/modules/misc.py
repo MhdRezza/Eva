@@ -6,6 +6,7 @@ from typing import Optional, List
 
 import requests
 import wikipedia
+
 from random import randint
 from PyLyrics import *
 from pythonping import ping as ping3
@@ -27,8 +28,64 @@ from hitsuki.modules.rextester.langs import languages
 from hitsuki.modules.translations.strings import tld
 from hitsuki.modules.helper_funcs.alternate import send_message
 
-from geopy.geocoders import Nominatim
-from telegram import Location
+
+SHRUGS = (
+    "┐(´д｀)┌",
+    "┐(´～｀)┌",
+    "┐(´ー｀)┌",
+    "┐(￣ヘ￣)┌",
+    "╮(╯∀╰)╭",
+    "╮(╯_╰)╭",
+    "┐(´д`)┌",
+    "┐(´∀｀)┌",
+    "ʅ(́◡◝)ʃ",
+    "┐(ﾟ～ﾟ)┌",
+    "┐('д')┌",
+    "┐(‘～`;)┌",
+    "ヘ(´－｀;)ヘ",
+    "┐( -“-)┌",
+    "ʅ（´◔౪◔）ʃ",
+    "ヽ(゜～゜o)ノ",
+    "ヽ(~～~ )ノ",
+    "┐(~ー~;)┌",
+    "┐(-。ー;)┌",
+    r"¯\_(ツ)_/¯",
+    r"¯\_(⊙_ʖ⊙)_/¯",
+    r"¯\_༼ ಥ ‿ ಥ ༽_/¯",
+    "乁( ⁰͡  Ĺ̯ ⁰͡ ) ㄏ",
+)
+ 
+HUGS = (
+"⊂(・﹏・⊂)",
+"⊂(・ヮ・⊂)",
+"⊂(・▽・⊂)",
+"(っಠ‿ಠ)っ",
+"ʕっ•ᴥ•ʔっ",
+"（っ・∀・）っ",
+"(っ⇀⑃↼)っ",
+"(つ´∀｀)つ",
+"(.づσ▿σ)づ.",
+"⊂(´・ω・｀⊂)",
+"(づ￣ ³￣)づ",
+"(.づ◡﹏◡)づ.",
+)
+
+normiefont = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+weebyfont = ['卂','乃','匚','刀','乇','下','厶','卄','工','丁','长','乚','从','𠘨','口','尸','㔿','尺','丂','丅','凵','リ','山','乂','丫','乙']
+
+
+@run_async
+def shrug(bot: Bot, update: Update):
+    # reply to correct message 
+    reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    reply_text = reply_text(random.choice(SHRUGS))
+ 
+ 
+@run_async
+def hug(bot: Bot, update: Update):
+    # reply to correct message 
+    reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    reply_text = reply_text(random.choice(HUGS))
 
 
 @run_async
@@ -534,23 +591,62 @@ def gdpr(bot: Bot, update: Update):
                                         parse_mode=ParseMode.MARKDOWN)
 
 
-def gps(bot: Bot, update: Update, args: List[str]):
-    message = update.effective_message
-    if len(args) == 0:
-        update.effective_message.reply_text("Give me some location.")
+@run_async
+def weebify(bot: Bot, update: Update, args):
+    msg = update.effective_message
+    if args:
+        string = " ".join(args).lower()
+    elif msg.reply_to_message:
+        string = msg.reply_to_message.text.lower()
+    else:
+        msg.reply_text("Enter some text to weebify or reply to someone's message!")
+        return
+        
+    for normiecharacter in string:
+        if normiecharacter in normiefont:
+            weebycharacter = weebyfont[normiefont.index(normiecharacter)]
+            string = string.replace(normiecharacter, weebycharacter)
+ 
+    if msg.reply_to_message:
+        msg.reply_to_message.reply_text(string)
+    else:
+        msg.reply_text(string)
+
+
+@run_async
+def pat(bot: Bot, update: Update):
+    chat_id = update.effective_chat.id
+    msg = str(update.message.text)
     try:
-        geolocator = Nominatim(user_agent="hades")
-        location = " ".join(args)
-        geoloc = geolocator.geocode(location)  
-        chat_id = update.effective_chat.id
-        lon = geoloc.longitude
-        lat = geoloc.latitude
-        the_loc = Location(lon, lat) 
-        gm = "https://www.google.com/maps/search/{},{}".format(lat,lon)
-        bot.send_location(chat_id, location=the_loc)
-        update.message.reply_text("Open with: [Google Maps]({})".format(gm), parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
-    except AttributeError:
-        update.message.reply_text("I can't find that")
+        msg = msg.split(" ", 1)[1]
+    except IndexError:
+        msg = ""
+    msg_id = update.effective_message.reply_to_message.message_id if update.effective_message.reply_to_message else update.effective_message.message_id
+    pats = []
+    pats = json.loads(urllib.request.urlopen(urllib.request.Request(
+    'http://headp.at/js/pats.json',
+    headers={'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686) '
+         'Gecko/20071127 Firefox/2.0.0.11'}
+    )).read().decode('utf-8'))
+    if "@" in msg and len(msg) > 5:
+        bot.send_photo(chat_id, f'https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}', caption=msg)
+    else:
+        bot.send_photo(chat_id, f'https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}', reply_to_message_id=msg_id)
+
+
+@run_async 
+def ping(bot: Bot, update: Update):
+    start_time = time.time()
+    requests.get('https://api.telegram.org')
+    end_time = time.time()
+    ping_time = round((end_time - start_time)*1000, 3)
+    update.effective_message.reply_text("*Pong!!!*\n`{}ms`".format(ping_time), parse_mode=ParseMode.MARKDOWN)
+
+
+def shell(command):
+    process = Popen(command,stdout=PIPE,shell=True,stderr=PIPE)
+    stdout,stderr = process.communicate()
+    return (stdout,stderr)
 
 
 __help__ = """
@@ -570,7 +666,6 @@ __help__ = """
  - /removebotkeyboard: Got a nasty bot keyboard stuck in your group?
  - /exec <language> <code> [/stdin <stdin>]: Execute a code in a specified language. Send an empty command to get the supported languages.
  - /wiki <keywords>: Get wikipedia articles just using this bot!
- - /gps <location>: the bot will send a map preview along with the Google Maps link to the location.
 
 *Other things:*
  - /runs: reply a random string from an array of replies.
@@ -578,6 +673,10 @@ __help__ = """
  - /slap: slap a user, or get slapped if not a reply.
  - /decide: Randomly answers yes/no/maybe.
  - /status: Shows some bot information
+ - /weebify: as a reply to a message, "weebifies" the message.
+ - /pat: give a headpat :3
+ - /shg or /shrug: pretty self-explanatory.
+ - /hug: give a hug and spread the love :)
 """
 
 __mod_name__ = "Misc"
@@ -608,9 +707,14 @@ DECIDE_HANDLER = CommandHandler("decide", decide)
 SNIPE_HANDLER = CommandHandler("snipe", snipe, pass_args=True, filters=CustomFilters.sudo_filter)
 
 GDPR_HANDLER = CommandHandler("gdpr", gdpr, filters=Filters.private)
-GPS_HANDLER = DisableAbleCommandHandler("gps", gps, pass_args=True)
+WEEBIFY_HANDLER = DisableAbleCommandHandler("weebify", weebify, pass_args=True)
+PAT_HANDLER = DisableAbleCommandHandler("pat", pat)
+SHRUG_HANDLER = DisableAbleCommandHandler(["shrug", "shg"], shrug)
+HUG_HANDLER = DisableAbleCommandHandler("hug", hug)
+PING_HANDLER = DisableAbleCommandHandler("ping", ping)
 
-dispatcher.add_handler(GPS_HANDLER)
+dispatcher.add_handler(SHRUG_HANDLER)
+dispatcher.add_handler(HUG_HANDLER)
 dispatcher.add_handler(UD_HANDLER)
 dispatcher.add_handler(PASTE_HANDLER)
 dispatcher.add_handler(GET_PASTE_HANDLER)
@@ -632,3 +736,6 @@ dispatcher.add_handler(WIKI_HANDLER)
 dispatcher.add_handler(DECIDE_HANDLER)
 dispatcher.add_handler(SNIPE_HANDLER)
 dispatcher.add_handler(GDPR_HANDLER)
+dispatcher.add_handler(WEEBIFY_HANDLER)
+dispatcher.add_handler(PAT_HANDLER)
+dispatcher.add_handler(PING_HANDLER)

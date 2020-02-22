@@ -31,5 +31,5 @@ wikipedia
 bleach
 markdown2
 regex
-geopy
 pytz
+jikanpy
