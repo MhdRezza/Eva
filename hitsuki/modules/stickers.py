@@ -47,7 +47,7 @@ def kang(bot: Bot, update: Update, args: List[str]):
     user = update.effective_user
     chat = update.effective_chat
     packnum = 0
-    packname = "c" + str(user.id) + "_by_" + bot.username
+    packname = "f" + str(user.id) + "_by_" + bot.username
     packname_found = 0
     max_stickers = 120
     while packname_found == 0:
@@ -55,7 +55,7 @@ def kang(bot: Bot, update: Update, args: List[str]):
             stickerset = bot.get_sticker_set(packname)
             if len(stickerset.stickers) >= max_stickers:
                 packnum += 1
-                packname = "c" + str(packnum) + "_" + str(user.id) + "_by_" + bot.username
+                packname = "f" + str(packnum) + "_" + str(user.id) + "_by_" + bot.username
             else:
                 packname_found = 1
         except TelegramError as e:
@@ -186,7 +186,7 @@ def kang(bot: Bot, update: Update, args: List[str]):
     else:
         packs = "Please reply to a sticker, or image to kang it!\nOh, by the way. here are your packs:\n"
         if packnum > 0:
-            firstpackname = "c" + str(user.id) + "_by_" + bot.username
+            firstpackname = "f" + str(user.id) + "_by_" + bot.username
             for i in range(0, packnum + 1):
                 if i == 0:
                     packs += f"[pack](t.me/addstickers/{firstpackname})\n"
