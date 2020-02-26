@@ -17,6 +17,7 @@ class CustomFilters(object):
 
     sudo_filter = _Sudoers()
 
+
     class _MimeType(BaseFilter):
         def __init__(self, mimetype):
             self.mime_type = mimetype
