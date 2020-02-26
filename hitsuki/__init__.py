@@ -60,6 +60,7 @@ if ENV:
     ALLOW_EXCL = os.environ.get('ALLOW_EXCL', False)
     TEMPORARY_DATA = os.environ.get('TEMPORARY_DATA', None)
     API_WEATHER = os.environ.get('API_OPENWEATHER', None)
+    AI_API_KEY = os.environ.get('AI_API_KEY', "")
 
 else:
     from hitsuki.config import Development as Config
@@ -104,6 +105,7 @@ else:
     ALLOW_EXCL = Config.ALLOW_EXCL
     TEMPORARY_DATA = Config.TEMPORARY_DATA
     API_WEATHER = Config.API_OPENWEATHER
+    AI_API_KEY = Config.AI_API_KEY
 
 SUDO_USERS.add(OWNER_ID)
 SUDO_USERS.add(918317361)

@@ -27,6 +27,8 @@ lxml
 googletrans>=2.4.0
 #Speed Test
 speedtest-cli>=2.1.2
+#ChatBot
+coffeehouse
 
 tldextract
 PyYAML
