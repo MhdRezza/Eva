@@ -2,7 +2,7 @@ import threading
 
 from sqlalchemy import Column, String
 
-from tg_bot.modules.sql import BASE, SESSION
+from hitsuki.modules.sql import BASE, SESSION
 
 
 class ChatbotChats(BASE):
