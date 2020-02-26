@@ -50,11 +50,6 @@ RUN mkdir /root/hitsuki/bin/
 WORKDIR /root/hitsuki/
 
 #
-# Copies session and config (if it exists)
-#
-COPY ./sample_config.env ./config.env* /root/hitsuki/
-
-#
 # Install requirements
 #
 RUN pip3 install -r requirements.txt
