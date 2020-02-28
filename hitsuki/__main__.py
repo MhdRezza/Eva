@@ -144,7 +144,7 @@ def start(bot: Bot, update: Update, args: List[str]):
     else:
         try:
             update.effective_message.reply_text(
-                (tld(chat.id, "Hey there! I'm alive :3 PM me if you have any questions on how to use me!")))
+                (tld(chat.id, "Halo guys! Saya masih aktif :3 PM saya jika kamu punya pertanyaan tentang saya!")))
         except:
             print("Nut")
 
@@ -158,14 +158,14 @@ def send_start(bot, update):
         pass
 
     chat = update.effective_chat  # type: Optional[Chat] and unused variable
-    text = (tld(chat.id, "Hey there! My name is *Hitsuki* - I'm here to help you manage your groups!\nClick Help button to find out more about how to use me to my full potential.\n\nFollow [Hitsuki](https://t.me/HitsukiNews) ( @HitsukiNews ) if you want to keep up with the news, updates and bot downtime!\n\n"))
+    text = (tld(chat.id, "Halo guys! Nama saya *Frozen Bot* - Saya disini untuk membantumu mengatur grup!\nKlik tombol bantuan untuk mengetahui bagaimana cara menggunakan saya.\n\nIkuti [YasirPedia Channel](https://t.me/YasirPediaChannel) jika kamu ingin mendapatkan informasi seputar teknologi!\n\n"))
 
-    text += (tld(chat.id, "This bot is managed by @HitaloSama\n\nWant to add me to your group? [Click here!](t.me/LordHitsuki_BOT?startgroup=true)"))
+    text += (tld(chat.id, "Bot ini di atur oleh [Yasir Aris M](tg://user?id={617426792})\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/YasirAssistant_bot?startgroup=true)"))
 
-    keyboard = [[InlineKeyboardButton(text="📃 HitaloSama's Docs", url="https://telegra.ph/HitaloKun-doc-07-15")]]
-    keyboard += [[InlineKeyboardButton(text="🛠 Control panel", callback_data="cntrl_panel_M")]]
-    keyboard += [[InlineKeyboardButton(text="🇺🇸 Language", callback_data="set_lang_"),
-                  InlineKeyboardButton(text="❔ Help", callback_data="help_back")]]
+    keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/YasirPediaChannel")]]
+    keyboard += [[InlineKeyboardButton(text="🛠 Control Panel", callback_data="cntrl_panel_M")]]
+    keyboard += [[InlineKeyboardButton(text="🇺🇸 Bahasa", callback_data="set_lang_"),
+                  InlineKeyboardButton(text="❔ Bantuan", callback_data="help_back")]]
 
     update.effective_message.reply_text(text, reply_markup=InlineKeyboardMarkup(keyboard),
                                         parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
