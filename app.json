@@ -1,6 +1,6 @@
 {
-  "name": "Yasir Assistant",
-  "description": "Bot Untuk Managemen Grup Yang Mampu Membantu Kalian!",
+  "name": "Yasir Assistant Bot",
+  "description": "Bot Untuk Manajemen Grup Yang Mampu Membantu Kalian!",
   "keywords": [
     "telegram",
     "best",
@@ -8,7 +8,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/yasirarism/EmiliaHikari/",
+  "repository": "https://github.com/yasirarism/Hitsuki/",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
@@ -25,14 +25,6 @@
     "OWNER_USERNAME": {
       "description": "Your username",
       "value": "TheDarkW3b"
-    },
-    "WEBHOOK": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode messages",
-      "value": "ANYTHING"
-    },
-    "URL": {
-      "description": "The Heroku App URL similar to https://<appname>.herokuapp.com/",
-      "value": ""
     },
     "MESSAGE_DUMP": {
       "description": "optional: a chat where your replied saved messages are stored, to stop people deleting their old",
@@ -56,11 +48,11 @@
     },
     "PORT": {
       "description": "Port to use for your webhooks",
-      "value": "8443"
+      "value": "5000"
     },
     "DEL_CMDS": {
       "description": "Whether to delete commands from users which don't have rights to use that command",
-      "value": "True"
+      "value": "False"
     },
     "STRICT_GBAN": {
       "description": "Enforce gbans across new groups as well as old groups. When a gbanned user talks, he will be banned.",
@@ -73,6 +65,10 @@
     "BAN_STICKER": {
       "description": "Which sticker to use when banning people. Use https://telegram.dog/ShowJsonBot to get the file_id",
       "value": "CAADBQADKwADttzjKMDa_NPYQVImFgQ"
+    },
+    "API_OPENWEATHER": {
+    "description": "Isi api openweather",
+    "value": ""
     }
   },
   "addons": [
