@@ -163,6 +163,7 @@ def send_start(bot, update):
     text += (tld(chat.id, "Bot ini di atur oleh [Yasir Aris M](tg://user?id={617426792})\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/YasirAssistant_bot?startgroup=true)"))
 
     keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/YasirPediaChannel")]]
+    keyboard = [[InlineKeyboardButton(text="Source Code", url="https://github.com/yasirarism/Hitsuki")]]
     keyboard += [[InlineKeyboardButton(text="🛠 Control Panel", callback_data="cntrl_panel_M")]]
     keyboard += [[InlineKeyboardButton(text="🇺🇸 Bahasa", callback_data="set_lang_"),
                   InlineKeyboardButton(text="❔ Bantuan", callback_data="help_back")]]
