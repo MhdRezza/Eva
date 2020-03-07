@@ -10,6 +10,10 @@ Join the [Hitsuki News](https://t.me/HitsukiNews) if you just want to stay in 
 
 If you are going to use something from this repository in your bot, please give the proper credits.
 
+## Heroku Deploy
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/yasirarism/Hitsuki)
+
 ## Thanks to
 
 - MrYacha - For pYanaBot.
