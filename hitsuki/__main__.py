@@ -158,7 +158,7 @@ def send_start(bot, update):
         pass
 
     chat = update.effective_chat  # type: Optional[Chat] and unused variable
-    text = (tld(chat.id, "Halo guys! Nama saya *Salsa* - Saya disini untuk membantumu mengatur grup!\nKlik tombol bantuan untuk mengetahui bagaimana cara menggunakan saya.\n\n)
+    text = (tld(chat.id, "Halo guys! Nama saya *Salsa* - Saya disini untuk membantumu mengatur grup!\nKlik tombol bantuan untuk mengetahui bagaimana cara menggunakan saya.))
     text += (tld(chat.id, "Bot ini di atur oleh [Mhd Rezza](https://t.me/Mhdrezza23)\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/SalsaDwi_bot?startgroup=true)"))
 
     keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/joinchat/AAAAAFi3uPnGiDk6wdVCDw")]]
