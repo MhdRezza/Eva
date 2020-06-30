@@ -158,13 +158,12 @@ def send_start(bot, update):
         pass
 
     chat = update.effective_chat  # type: Optional[Chat] and unused variable
-    text = (tld(chat.id, "Halo guys! Nama saya *Frozen Bot* - Saya disini untuk membantumu mengatur grup!\nKlik tombol bantuan untuk mengetahui bagaimana cara menggunakan saya.\n\nIkuti [YasirPedia Channel](https://t.me/YasirPediaChannel) jika kamu ingin mendapatkan informasi seputar teknologi!\n\n"))
+    text = (tld(chat.id, "Halo guys! Nama saya *Salsa* - Saya disini untuk membantumu mengatur grup!\nKlik tombol bantuan untuk mengetahui bagaimana cara menggunakan saya.\n\nIkuti [YasirPedia Channel](https://t.me/YasirPediaChannel) jika kamu ingin mendapatkan informasi seputar teknologi!\n\n"))
 
-    text += (tld(chat.id, "Bot ini di atur oleh [Yasir Aris M](tg://user?id={617426792})\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/YasirAssistant_bot?startgroup=true)"))
+    text += (tld(chat.id, "Bot ini di atur oleh [Mhd Rezza](tg://user?id={1270292517})\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/SalsaDwi_bot?startgroup=true)"))
 
-    keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/YasirPediaChannel")]]
-    keyboard = [[InlineKeyboardButton(text="Source Code", url="https://github.com/yasirarism/Hitsuki")]]
-    keyboard += [[InlineKeyboardButton(text="🛠 Control Panel", callback_data="cntrl_panel_M")]]
+    keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/joinchat/AAAAAFi3uPnGiDk6wdVCDw")]]
+    keyboard += [[InlineKeyboardButton(text="🛠 Pengaturan", callback_data="cntrl_panel_M")]]
     keyboard += [[InlineKeyboardButton(text="🇺🇸 Bahasa", callback_data="set_lang_"),
                   InlineKeyboardButton(text="❔ Bantuan", callback_data="help_back")]]
 
