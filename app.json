@@ -8,7 +8,7 @@
     "manager",
     "3"
   ],
-  "repository": "https://github.com/yasirarism/Hitsuki/",
+  "repository": "https://github.com/MhdRezza/Eva",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable env variables",
@@ -20,15 +20,15 @@
     },
     "OWNER_ID": {
       "description": "An integer of consisting of your owner ID",
-      "value": "686021814"
+      "value": "1270292517"
     },
     "OWNER_USERNAME": {
       "description": "Your username",
-      "value": "TheDarkW3b"
+      "value": "Mhdrezza23"
     },
     "MESSAGE_DUMP": {
       "description": "optional: a chat where your replied saved messages are stored, to stop people deleting their old",
-      "value": "-1007777777777"
+      "value": "-1001324379474"
     },
     "SUDO_USERS": {
       "description": "A space separated list of user_ids which should be considered sudo users",
@@ -44,7 +44,7 @@
     },
     "DONATION_LINK": {
       "description": "Optional: link where you would like to receive donations.",
-      "value": "https://t.me/TheDarkW3b"
+      "value": "https://t.me/Mhdrezza23"
     },
     "PORT": {
       "description": "Port to use for your webhooks",
@@ -64,11 +64,11 @@
     },
     "BAN_STICKER": {
       "description": "Which sticker to use when banning people. Use https://telegram.dog/ShowJsonBot to get the file_id",
-      "value": "CAADBQADKwADttzjKMDa_NPYQVImFgQ"
+      "value": "CAACAgUAAxkBAAEFPE9e-zLtJoXjYu6ykhfIgDI-2hqXmwAC0AADUiQIVcEFuN258kjsGgQ"
     },
     "API_OPENWEATHER": {
     "description": "Isi api openweather",
-    "value": ""
+    "value": "{"coord":{"lon":-0.13,"lat":51.51},"weather":[{"id":300,"main":"Drizzle","description":"light intensity drizzle","icon":"09d"}],"base":"stations","main":{"temp":280.32,"pressure":1012,"humidity":81,"temp_min":279.15,"temp_max":281.15},"visibility":10000,"wind":{"speed":4.1,"deg":80},"clouds":{"all":90},"dt":1485789600,"sys":{"type":1,"id":5091,"message":0.0103,"country":"GB","sunrise":1485762037,"sunset":1485794875},"id":2643743,"name":"London","cod":200}"
     }
   },
   "addons": [
