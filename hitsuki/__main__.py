@@ -162,7 +162,8 @@ def send_start(bot, update):
 
     text += (tld(chat.id, "Bot ini di atur oleh [Mhd Rezza](https://t.me/Mhdrezza23)\n\nIngin memasukkanku ke grup? [Klik Disini!](t.me/SalsaDwi_bot?startgroup=true)"))
 
-    keyboard = [[InlineKeyboardButton(text="📃 Channel Saya", url="https://t.me/joinchat/AAAAAFi3uPnGiDk6wdVCDw")]]
+    keyboard = [[InlineKeyboardButton(text="👥 Grup Pendukung", url="https://t.me/joinchat/S7cgJR17XqMNWbOrJWVDQA"),
+                  InlineKeyboardButton(text="🔔 Update Channel", url="https://t.me/joinchat/AAAAAFi3uPleF4hZko8p0g")]]
     keyboard += [[InlineKeyboardButton(text="🛠 Pengaturan", callback_data="cntrl_panel_M")]]
     keyboard += [[InlineKeyboardButton(text="🇺🇸 Bahasa", callback_data="set_lang_"),
                   InlineKeyboardButton(text="❔ Bantuan", callback_data="help_back")]]
