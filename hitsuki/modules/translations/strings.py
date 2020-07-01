@@ -1,7 +1,6 @@
 from hitsuki.modules.sql.translation import prev_locale
 from hitsuki.modules.translations.English import EnglishStrings
 from hitsuki.modules.translations.PortugueseBr import PortugueseBrStrings
-from hitsuki.modules.translations.Indonesia import IndonesiaStrings
 
 
 def tld(chat_id, t, show_none=True):
@@ -11,8 +10,6 @@ def tld(chat_id, t, show_none=True):
         LOCALE = LANGUAGE.locale_name
         if LOCALE in ('pt') and t in PortugueseBrStrings:
             return PortugueseBrStrings[t]
-        if LOCALE in ('id') and t in IndonesiaStrings:
-            return IndonesiaStrings[t]
         else:
             if t in EnglishStrings:
                 return EnglishStrings[t]
@@ -37,9 +34,7 @@ def tld_help(chat_id, t):
 
         if LOCALE in ('pt') and t in PortugueseBrStrings:
             return PortugueseBrStrings[t]
-        if LOCALE in ('id') and t in IndonesiaStrings:
-            return IndonesiaStrings[t]
-         else:
+        else:
             return False
     else:
         return False
