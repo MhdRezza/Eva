@@ -15,7 +15,7 @@ def tld(chat_id, t, show_none=True):
             if t in EnglishStrings:
                 return EnglishStrings[t]
             else:
-            if LOCALE in ('id') and t in PortugueseBrStrings:
+            if LOCALE in ('id') and t in IndonesiaStrings:
             return IndonesiaStrings[t]
             else:
                 return t
