@@ -186,7 +186,7 @@ Contoh cara menggunakan tambalan adalah mengatur sambutan Anda, melalui:
 Cobalah ini pada catatan, filter, pesan selamat datang atau bahkan aturan!
 """
 
-EnglishStrings = {
+IndonesiaStrings = {
     "send-start": "" "Hai {}, nama saya {}! Jika Anda memiliki pertanyaan tentang cara menggunakan saya, baca / bantu - dan kemudian menuju ke @YanaBotGroup.
 
 Saya bot manajer grup yang dikelola oleh [orang ini] (tg: // user? Id = {654839744}). Saya seorang [Marie] (https://github.com/PaulSonOfLars/tgbot) fork.
