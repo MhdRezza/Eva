@@ -13,18 +13,60 @@ from telegram import ParseMode
 from telegram.ext import CommandHandler, run_async, Filters
 from telegram.utils.helpers import escape_markdown, mention_html, mention_markdown
 
-from emilia import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS, BAN_STICKER, spamfilters, MAPS_API
-from emilia.__main__ import STATS, USER_INFO
-from emilia.modules.disable import DisableAbleCommandHandler
-from emilia.modules.helper_funcs.extraction import extract_user
-from emilia.modules.helper_funcs.filters import CustomFilters
-from emilia.modules.helper_funcs.msg_types import get_message_type
-from emilia.modules.helper_funcs.misc import build_keyboard_alternate
+from hitsuki import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, WHITELIST_USERS
+from hitsuki.__main__ import STATS, USER_INFO, GDPR
+from hitsuki.modules.disable import DisableAbleCommandHandler
+from hitsuki.modules.helper_funcs.extraction import extract_user
+from hitsuki.modules.helper_funcs.filters import CustomFilters
+from hitsuki.modules.sql import languages_sql as langsql
+from hitsuki.modules.rextester.api import Rextester, CompilerError
+from hitsuki.modules.rextester.langs import languages
+from hitsuki.modules.translations.strings import tld
+from hitsuki.modules.helper_funcs.alternate import send_message
 
-from emilia.modules.languages import tl
-from emilia.modules.sql import languages_sql as lang_sql
-import emilia.modules.sql.feds_sql as feds_sql
-from emilia.modules.helper_funcs.alternate import send_message
+SHRUGS = (
+    "┐(´д｀)┌",
+    "┐(´～｀)┌",
+    "┐(´ー｀)┌",
+    "┐(￣ヘ￣)┌",
+    "╮(╯∀╰)╭",
+    "╮(╯_╰)╭",
+    "┐(´д`)┌",
+    "┐(´∀｀)┌",
+    "ʅ(́◡◝)ʃ",
+    "┐(ﾟ～ﾟ)┌",
+    "┐('д')┌",
+    "┐(‘～`;)┌",
+    "ヘ(´－｀;)ヘ",
+    "┐( -“-)┌",
+    "ʅ（´◔౪◔）ʃ",
+    "ヽ(゜～゜o)ノ",
+    "ヽ(~～~ )ノ",
+    "┐(~ー~;)┌",
+    "┐(-。ー;)┌",
+    r"¯\_(ツ)_/¯",
+    r"¯\_(⊙_ʖ⊙)_/¯",
+    r"¯\_༼ ಥ ‿ ಥ ༽_/¯",
+    "乁( ⁰͡  Ĺ̯ ⁰͡ ) ㄏ",
+)
+ 
+HUGS = (
+"⊂(・﹏・⊂)",
+"⊂(・ヮ・⊂)",
+"⊂(・▽・⊂)",
+"(っಠ‿ಠ)っ",
+"ʕっ•ᴥ•ʔっ",
+"（っ・∀・）っ",
+"(っ⇀⑃↼)っ",
+"(つ´∀｀)つ",
+"(.づσ▿σ)づ.",
+"⊂(´・ω・｀⊂)",
+"(づ￣ ³￣)づ",
+"(.づ◡﹏◡)づ.",
+)
+
+normiefont = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+weebyfont = ['卂','乃','匚','刀','乇','下','厶','卄','工','丁','长','乚','从','𠘨','口','尸','㔿','尺','丂','丅','凵','リ','山','乂','丫','乙']
 
 # Change language locale to Indonesia
 # Install language:
@@ -77,7 +119,7 @@ RUN_STRINGS = (
     "Saya tidak peduli dengan anda... Jadi, lari lebih cepat!",
     "Anda tidak bisa MENANGANI kebenaran!",
     "Dulu, di galaksi yang sangat jauh... Seseorang pasti peduli dengan dia.",
-    "Hei, lihat mereka! Mereka berlari dari Emilia yang tak terelakkan ... Lucu sekali 😂",
+    "Hei, lihat mereka! Mereka berlari dari Salsa yang tak terelakkan ... Lucu sekali 😂",
     "Han menembak lebih dulu. Begitu juga saya.",
     "Apa yang kamu kejar? kelinci putih?",
     "Sepertinya dokter akan mengatakan... LARI!",
