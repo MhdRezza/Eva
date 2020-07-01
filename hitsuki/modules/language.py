@@ -73,6 +73,7 @@ def locale_button(bot, update):
 
     query.message.reply_text(text, parse_mode=ParseMode.MARKDOWN,
                              reply_markup=InlineKeyboardMarkup([[
+                                 InlineKeyboardButton("Indonesia 🇮🇩", callback_data="set_lang_id")]] + [[
                                  InlineKeyboardButton("English 🇺🇸", callback_data="set_lang_en")]] + [[
 InlineKeyboardButton("Português 🇧🇷", callback_data="set_lang_pt")]] + [[
                                  InlineKeyboardButton("⬅️ Back", callback_data="bot_start")]]))
