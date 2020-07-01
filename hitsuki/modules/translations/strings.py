@@ -39,7 +39,7 @@ def tld_help(chat_id, t):
         if LOCALE in ('pt') and t in PortugueseBrStrings:
             return PortugueseBrStrings[t]
         else:
-        if LOCALE in ('id') and t in PortugueseBrStrings:
+        if LOCALE in ('id') and t in IndonesiaStrings:
             return IndonesiaStrings[t]
          else:
             return False
