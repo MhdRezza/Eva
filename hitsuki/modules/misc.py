@@ -512,6 +512,8 @@ def wiki(bot: Bot, update: Update):
 	if str(getlang) == "en":
 		wikipedia.set_lang("en")
 	else:
+		wikipedia.set_lang("id")
+	else:
 		wikipedia.set_lang("pt")
 	try:
 		pagewiki = wikipedia.page(teks)
